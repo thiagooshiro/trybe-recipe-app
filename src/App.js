@@ -4,12 +4,16 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RecipeProvider from './context/RecipeProvider';
 import Login from './pages/Login';
+import Comidas from './pages/Comidas';
+import Perfil from './pages/Perfil';
 
 function App() {
   return (
     <RecipeProvider>
       <Switch>
         <Route exact path="/" component={ Login } />
+        <Route exact path="/comidas" component={ Comidas } />
+        <Route exact path="/perfil" component={ Perfil } />
       </Switch>
     </RecipeProvider>
   );
