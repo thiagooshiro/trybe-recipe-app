@@ -5,12 +5,22 @@ import RecipeContext from './RecipeContext';
 function RecipeProvider({ children }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [searchText, setSearchText] = useState('');
+  const [showInput, setShowInput] = useState(false);
 
-  const contextValueLogin = { email, setEmail, password, setPassword };
+  const contextValue = {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    searchText,
+    setSearchText,
+    showInput,
+    setShowInput };
 
   return (
     <RecipeContext.Provider
-      value={ contextValueLogin }
+      value={ contextValue }
     >
       {children}
     </RecipeContext.Provider>

@@ -49,7 +49,7 @@ function Login(props) {
       />
 
       <Button
-        text="bottao"
+        text="Entrar"
         dataTestId="login-submit-btn"
         disabled={ password.length <= MIN_CHARACTER || !EMAIL_REGEX.test(email) }
         onClick={ handleClick }
