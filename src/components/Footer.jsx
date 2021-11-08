@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
@@ -9,30 +10,27 @@ import '../styles/Footer.css';
 function Footer() {
   return (
     <div data-testid="footer" className="bottom-menu">
-      <button
-        type="button"
-        data-testid="drinks-bottom-btn"
-        src={ drinkIcon }
-        alt="drink icon"
-      >
-        <img src={ drinkIcon } alt="drink icon" />
-      </button>
-      <button
-        type="button"
-        data-testid="explore-bottom-btn"
-        src={ exploreIcon }
-        alt="explore icon"
-      >
-        <img src={ exploreIcon } alt="explore icon" />
-      </button>
-      <button
-        type="button"
-        data-testid="food-bottom-btn"
-        src={ mealIcon }
-        alt="meal icon"
-      >
-        <img src={ mealIcon } alt="meal icon" />
-      </button>
+      <Link to="/bebidas">
+        <img
+          data-testid="drinks-bottom-btn"
+          src={ drinkIcon }
+          alt="drink icon"
+        />
+      </Link>
+      <Link to="/explorar">
+        <img
+          data-testid="explore-bottom-btn"
+          src={ exploreIcon }
+          alt="explore icon"
+        />
+      </Link>
+      <Link to="/comidas">
+        <img
+          data-testid="food-bottom-btn"
+          src={ mealIcon }
+          alt="meal icon"
+        />
+      </Link>
     </div>
   );
 }
