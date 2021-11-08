@@ -15,7 +15,6 @@ function Header({ title, history }) {
     ingredientAPI,
     nameAPI,
     firstLetterAPI,
-    // isLoading,
   } = useContext(RecipeContext);
 
   const searchIconClick = () => {
@@ -35,7 +34,7 @@ function Header({ title, history }) {
     if (ingredient.checked) {
       const resultIngredient = await ingredientAPI(searchText, title);
       setSearchText('');
-      if (resultIngredient.length === 1) {
+      if (resultIngredient && resultIngredient.length === 1) {
         const key = Object.values(resultIngredient[0])[0];
         history.push(`/${title.toLowerCase()}/${key}`);
       }
@@ -44,21 +43,19 @@ function Header({ title, history }) {
     if (name.checked) {
       const resultName = await nameAPI(searchText, title);
       setSearchText('');
-      if (resultName.length === 1) {
+      if (resultName && resultName.length === 1) {
         const key = Object.values(resultName[0])[0];
         history.push(`/${title.toLowerCase()}/${key}`);
       }
-      return console.log(resultName);
     }
 
     if (firstLetter.checked && searchText.length === 1) {
       const resultFirstLetter = await firstLetterAPI(searchText, title);
       setSearchText('');
-      if (resultFirstLetter.length === 1) {
+      if (resultFirstLetter && resultFirstLetter.length === 1) {
         const key = Object.values(resultFirstLetter[0])[0];
         history.push(`/${title.toLowerCase()}/${key}`);
       }
-      return console.log(resultFirstLetter);
     }
 
     if (firstLetter.checked && searchText.length !== 1) {
@@ -140,7 +137,7 @@ function Header({ title, history }) {
         /> }
 
       />
-      {showInput && renderSearch() }
+      {showInput && renderSearch()}
     </header>
   );
 }

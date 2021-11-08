@@ -12,21 +12,24 @@ function RecipeProvider({ children }) {
   const [searchText, setSearchText] = useState('');
   const [showInput, setShowInput] = useState(false);
   const [apiResult, setApiResult] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [alertState, setAlertState] = useState(true);
+  const alertMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
 
   const ingredientAPI = async (ingredient, title) => {
     if (title.includes('Comidas')) { // Manter atenção para caso o teste retorne erro devido ao case sensitive.
       const data = await fetchIngredientFoodAPI(ingredient);
       const { meals } = data;
       setApiResult(meals);
-      setIsLoading(false);
+      console.log(data);
+      if (!meals) global.alert(alertMsg);
       return meals;
     }
     if (title.includes('Bebidas')) { // Manter atenção para caso o teste retorne erro devido ao case sensitive.
       const data = await fetchIngredientDrinkAPI(ingredient);
       const { drinks } = data;
       setApiResult(drinks);
-      setIsLoading(false);
+      console.log(data);
+      if (!drinks) global.alert(alertMsg);
       return drinks;
     }
   };
@@ -36,14 +39,14 @@ function RecipeProvider({ children }) {
       const data = await fetchNameFoodAPI(name);
       const { meals } = data;
       setApiResult(meals);
-      setIsLoading(false);
+      if (!meals) global.alert(alertMsg);
       return meals;
     }
     if (title.includes('Bebidas')) {
       const data = await fetchNameDrinkAPI(name);
       const { drinks } = data;
       setApiResult(drinks);
-      setIsLoading(false);
+      if (!drinks) global.alert(alertMsg);
       return drinks;
     }
   };
@@ -53,14 +56,14 @@ function RecipeProvider({ children }) {
       const data = await fetchFirstLetterFoodAPI(firstLetter);
       const { meals } = data;
       setApiResult(meals);
-      setIsLoading(false);
+      if (!meals) global.alert(alertMsg);
       return meals;
     }
     if (title.includes('Bebidas')) {
       const data = await fetchFirstLetterDrinkAPI(firstLetter);
       const { drinks } = data;
       setApiResult(drinks);
-      setIsLoading(false);
+      if (!drinks) global.alert(alertMsg);
       return drinks;
     }
   };
@@ -79,7 +82,8 @@ function RecipeProvider({ children }) {
     firstLetterAPI,
     apiResult,
     setApiResult,
-    isLoading };
+    alertState,
+    setAlertState };
 
   return (
     <RecipeContext.Provider

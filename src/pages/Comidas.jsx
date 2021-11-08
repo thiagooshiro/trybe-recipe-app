@@ -13,8 +13,8 @@ function Comidas({ history }) {
     <div>
       <Header title="Comidas" history={ history } />
       {
-        apiResult.length === 0
-          ? <p>Loading...</p>
+        !apiResult
+          ? null
           : apiResult
             .slice(0, RESULTS_PER_PAGE)
             .map((mealOrDrink, i) => (
