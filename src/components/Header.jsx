@@ -26,29 +26,28 @@ function Header({ title }) {
     stateFunction(target.value);
   };
 
-  const handleClick = async (event) => {
+  const handleSearchClick = async (event) => {
     event.preventDefault();
-
     const ingredient = document.querySelector('#ingredient');
     const name = document.querySelector('#name');
     const firstLetter = document.querySelector('#firstLetter');
 
     if (ingredient.checked) {
-      const resultIngredient = await ingredientAPI(searchText);
+      const resultIngredientFood = await ingredientAPI(searchText, title);
       setSearchText('');
-      return console.log(resultIngredient);
+      return console.log(resultIngredientFood);
     }
 
     if (name.checked) {
-      const resultName = await nameAPI(searchText);
+      const resultNameFood = await nameAPI(searchText, title);
       setSearchText('');
-      return console.log(resultName);
+      return console.log(resultNameFood);
     }
 
     if (firstLetter.checked && searchText.length === 1) {
-      const resultFirstLetter = await firstLetterAPI(searchText);
+      const resultFirstLetterFood = await firstLetterAPI(searchText, title);
       setSearchText('');
-      return console.log(resultFirstLetter);
+      return console.log(resultFirstLetterFood);
     }
 
     if (firstLetter.checked && searchText.length !== 1) {
@@ -100,7 +99,7 @@ function Header({ title }) {
         <button
           data-testid="exec-search-btn"
           type="submit"
-          onClick={ handleClick }
+          onClick={ (event) => handleSearchClick(event) }
         >
           Buscar
 

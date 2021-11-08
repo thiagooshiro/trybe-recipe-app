@@ -6,6 +6,7 @@ import RecipeProvider from './context/RecipeProvider';
 import Login from './pages/Login';
 import Comidas from './pages/Comidas';
 import Perfil from './pages/Perfil';
+import Bebidas from './pages/Bebidas';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={ Login } />
         <Route exact path="/comidas" component={ Comidas } />
+        <Route exact path="/bebidas" component={ Bebidas } />
         <Route exact path="/perfil" component={ Perfil } />
       </Switch>
     </RecipeProvider>
