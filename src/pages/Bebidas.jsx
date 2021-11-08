@@ -2,9 +2,9 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import Header from '../components/Header';
 
-function Bebidas() {
+function Bebidas({ history }) {
   return (
-    <Header title="Bebidas" />
+    <Header title="Bebidas" history={ history } />
   );
 }
 

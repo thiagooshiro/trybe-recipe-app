@@ -6,7 +6,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Button from './Button';
 
-function Header({ title }) {
+function Header({ title, history }) {
   const {
     searchText,
     setSearchText,
@@ -33,21 +33,33 @@ function Header({ title }) {
     const firstLetter = document.querySelector('#firstLetter');
 
     if (ingredient.checked) {
-      const resultIngredientFood = await ingredientAPI(searchText, title);
+      const resultIngredient = await ingredientAPI(searchText, title);
       setSearchText('');
-      return console.log(resultIngredientFood);
+      if (resultIngredient.length === 1) {
+        const key = Object.values(resultIngredient[0])[0];
+        history.push(`/${title.toLowerCase()}/${key}`);
+      }
+      return console.log(resultIngredient);
     }
 
     if (name.checked) {
-      const resultNameFood = await nameAPI(searchText, title);
+      const resultName = await nameAPI(searchText, title);
       setSearchText('');
-      return console.log(resultNameFood);
+      if (resultName.length === 1) {
+        const key = Object.values(resultName[0])[0];
+        history.push(`/${title.toLowerCase()}/${key}`);
+      }
+      return console.log(resultName);
     }
 
     if (firstLetter.checked && searchText.length === 1) {
-      const resultFirstLetterFood = await firstLetterAPI(searchText, title);
+      const resultFirstLetter = await firstLetterAPI(searchText, title);
       setSearchText('');
-      return console.log(resultFirstLetterFood);
+      if (resultFirstLetter.length === 1) {
+        const key = Object.values(resultFirstLetter[0])[0];
+        history.push(`/${title.toLowerCase()}/${key}`);
+      }
+      return console.log(resultFirstLetter);
     }
 
     if (firstLetter.checked && searchText.length !== 1) {
