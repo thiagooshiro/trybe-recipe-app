@@ -1,10 +1,15 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 function Comidas() {
   return (
-    <Header title="Comidas" />
+    <div>
+      <Header title="Comidas" />
+      <Footer />
+    </div>
+
   );
 }
 
