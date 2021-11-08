@@ -39,7 +39,6 @@ function Header({ title, history }) {
         const key = Object.values(resultIngredient[0])[0];
         history.push(`/${title.toLowerCase()}/${key}`);
       }
-      return console.log(resultIngredient);
     }
 
     if (name.checked) {
@@ -148,6 +147,7 @@ function Header({ title, history }) {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Header;
