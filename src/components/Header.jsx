@@ -6,7 +6,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Button from './Button';
 
-function Header({ title }) {
+function Header({ title, history }) {
   const {
     searchText,
     setSearchText,
@@ -15,7 +15,6 @@ function Header({ title }) {
     ingredientAPI,
     nameAPI,
     firstLetterAPI,
-    // isLoading,
   } = useContext(RecipeContext);
 
   const searchIconClick = () => {
@@ -26,29 +25,37 @@ function Header({ title }) {
     stateFunction(target.value);
   };
 
-  const handleClick = async (event) => {
+  const handleSearchClick = async (event) => {
     event.preventDefault();
-
     const ingredient = document.querySelector('#ingredient');
     const name = document.querySelector('#name');
     const firstLetter = document.querySelector('#firstLetter');
 
     if (ingredient.checked) {
-      const resultIngredient = await ingredientAPI(searchText);
+      const resultIngredient = await ingredientAPI(searchText, title);
       setSearchText('');
-      return console.log(resultIngredient);
+      if (resultIngredient && resultIngredient.length === 1) {
+        const key = Object.values(resultIngredient[0])[0];
+        history.push(`/${title.toLowerCase()}/${key}`);
+      }
     }
 
     if (name.checked) {
-      const resultName = await nameAPI(searchText);
+      const resultName = await nameAPI(searchText, title);
       setSearchText('');
-      return console.log(resultName);
+      if (resultName && resultName.length === 1) {
+        const key = Object.values(resultName[0])[0];
+        history.push(`/${title.toLowerCase()}/${key}`);
+      }
     }
 
     if (firstLetter.checked && searchText.length === 1) {
-      const resultFirstLetter = await firstLetterAPI(searchText);
+      const resultFirstLetter = await firstLetterAPI(searchText, title);
       setSearchText('');
-      return console.log(resultFirstLetter);
+      if (resultFirstLetter && resultFirstLetter.length === 1) {
+        const key = Object.values(resultFirstLetter[0])[0];
+        history.push(`/${title.toLowerCase()}/${key}`);
+      }
     }
 
     if (firstLetter.checked && searchText.length !== 1) {
@@ -100,7 +107,7 @@ function Header({ title }) {
         <button
           data-testid="exec-search-btn"
           type="submit"
-          onClick={ handleClick }
+          onClick={ (event) => handleSearchClick(event) }
         >
           Buscar
 
@@ -130,13 +137,14 @@ function Header({ title }) {
         /> }
 
       />
-      {showInput && renderSearch() }
+      {showInput && renderSearch()}
     </header>
   );
 }
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Header;
