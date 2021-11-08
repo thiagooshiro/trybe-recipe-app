@@ -1,9 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-function Comidas() {
+function Bebidas() {
   return (
     <div>
       <Header title="Comidas" />
@@ -13,8 +12,4 @@ function Comidas() {
   );
 }
 
-/* Comidas.propTypes = {
-
-}; */
-
-export default Comidas;
+export default Bebidas;
