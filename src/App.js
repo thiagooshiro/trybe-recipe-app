@@ -18,8 +18,8 @@ function App() {
     <RecipeProvider>
       <Switch>
         <Route exact path="/" component={ Login } />
-        <Route exact path="/bebidas" component={ Bebidas } />
         <Route exact path="/comidas" component={ Comidas } />
+        <Route exact path="/bebidas" component={ Bebidas } />
         <Route exact path="/perfil" component={ Perfil } />
         <Route exact path="/explorar" component={ Explorar } />
         <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
