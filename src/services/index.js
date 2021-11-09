@@ -39,3 +39,10 @@ export const fetchFirstLetterDrinkAPI = async (firstLetter) => {
   const result = await endpoint.json();
   return result;
 };
+
+export const fetchCategoryDrinkAPI = async () => {
+  const endpoint = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+
+  const result = await endpoint.json();
+  return result;
+};

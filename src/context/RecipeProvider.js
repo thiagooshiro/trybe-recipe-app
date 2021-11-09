@@ -4,6 +4,7 @@ import RecipeContext from './RecipeContext';
 import {
   fetchIngredientFoodAPI, fetchNameFoodAPI, fetchFirstLetterFoodAPI,
   fetchIngredientDrinkAPI, fetchNameDrinkAPI, fetchFirstLetterDrinkAPI,
+  fetchCategoryDrinkAPI,
 } from '../services';
 
 function RecipeProvider({ children }) {
@@ -68,6 +69,14 @@ function RecipeProvider({ children }) {
     }
   };
 
+  const categoryDrinkAPI = async () => {
+    const data = await fetchCategoryDrinkAPI();
+    const { drinks } = data;
+    setApiResult(drinks);
+    if (!drinks) global.alert(alertMsg);
+    return drinks;
+  };
+
   const contextValue = {
     email,
     setEmail,
@@ -80,6 +89,7 @@ function RecipeProvider({ children }) {
     ingredientAPI,
     nameAPI,
     firstLetterAPI,
+    categoryDrinkAPI,
     apiResult,
     setApiResult,
     alertState,
