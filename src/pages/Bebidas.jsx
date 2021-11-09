@@ -1,18 +1,72 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../components/Header';
 import ThumbCards from '../components/ThumbCards';
 import RecipeContext from '../context/RecipeContext';
 import Footer from '../components/Footer';
+import Button from '../components/Button';
 
 function Bebidas({ history }) {
-  const { apiResult } = useContext(RecipeContext);
+  const {
+    apiResult,
+    catListResult,
+    drinkCatListAPI,
+    drinkCatFilterAPI,
+    toggle,
+    setToggle,
+    recipeDrinkAPI,
+    textState,
+    setTextState,
+  } = useContext(RecipeContext);
 
   const RESULTS_PER_PAGE = 12;
+  const CAT_LIST_RANGE = 5;
+
+  const onLoadList = async () => {
+    await drinkCatListAPI();
+  };
+
+  useEffect(() => {
+    onLoadList();
+  }, []);
+
+  const handleFilter = async ({ target }) => {
+    if (toggle && textState !== target.innerText) {
+      await drinkCatFilterAPI(target.innerText);
+      setTextState(target.innerText);
+      setToggle(!toggle);
+    }
+
+    if (toggle && textState === target.innerText) {
+      await recipeDrinkAPI();
+      setTextState('');
+      setToggle(!toggle);
+    }
+
+    if (!toggle && textState !== target.innerText) {
+      await drinkCatFilterAPI(target.innerText);
+      setTextState(target.innerText);
+      setToggle(!toggle);
+    }
+
+    if (!toggle && textState === target.innerText) {
+      await recipeDrinkAPI();
+      setTextState('');
+      setToggle(!toggle);
+    }
+  };
 
   return (
     <div>
       <Header title="Bebidas" history={ history } />
+      {catListResult && catListResult.slice(0, CAT_LIST_RANGE).map((cat, i) => (
+        <Button
+          key={ i }
+          text={ cat.strCategory }
+          dataTestId={ `${cat.strCategory}-category-filter` }
+          onClick={ handleFilter }
+        />
+      ))}
       {
         !apiResult
           ? null

@@ -18,12 +18,12 @@ function Header({ title, history }) {
     ingredientAPI,
     nameAPI,
     firstLetterAPI,
-    categoryDrinkAPI,
+    recipeDrinkAPI,
   } = useContext(RecipeContext);
 
   const onLoadList = async () => {
     if (title === 'Comidas') await ingredientAPI(searchText, title);
-    if (title === 'Bebidas') await categoryDrinkAPI();
+    if (title === 'Bebidas') await recipeDrinkAPI();
   };
 
   useEffect(() => {
