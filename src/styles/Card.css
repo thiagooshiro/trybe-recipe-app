@@ -1,0 +1,21 @@
+.item-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.item-card img {
+  background-clip: content-box;
+  background-position: center;
+  background-size: cover;
+  width: 250px;
+}
+
+.item-card h3 {
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 10px;
+  text-align: center;
+  width: 250px;
+}

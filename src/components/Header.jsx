@@ -6,6 +6,8 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Button from './Button';
 
+import '../styles/Header.css';
+
 function Header({ title, history }) {
   const {
     searchText,
@@ -65,7 +67,7 @@ function Header({ title, history }) {
 
   function renderSearch() {
     return (
-      <div>
+      <div className="search-container">
         <input
           type="text"
           value={ searchText }
@@ -117,7 +119,7 @@ function Header({ title, history }) {
   }
 
   return (
-    <header>
+    <header className="header-container">
       <Link to="/perfil">
         <img
           data-testid="profile-top-btn"
