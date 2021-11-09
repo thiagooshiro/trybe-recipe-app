@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import RecipeContext from '../context/RecipeContext';
@@ -17,7 +18,17 @@ function Header({ title, history }) {
     ingredientAPI,
     nameAPI,
     firstLetterAPI,
+    recipeDrinkAPI,
   } = useContext(RecipeContext);
+
+  const onLoadList = async () => {
+    if (title === 'Comidas') await ingredientAPI(searchText, title);
+    if (title === 'Bebidas') await recipeDrinkAPI();
+  };
+
+  useEffect(() => {
+    onLoadList();
+  }, []);
 
   const searchIconClick = () => {
     setShowInput(!showInput);

@@ -4,6 +4,8 @@ import RecipeContext from './RecipeContext';
 import {
   fetchIngredientFoodAPI, fetchNameFoodAPI, fetchFirstLetterFoodAPI,
   fetchIngredientDrinkAPI, fetchNameDrinkAPI, fetchFirstLetterDrinkAPI,
+  fetchRecipeDrinkAPI, fetchFoodCatListAPI, fetchDrinkCatListAPI,
+  fetchFoodCatFilterAPI, fetchDrinkCatFilterAPI,
 } from '../services';
 
 function RecipeProvider({ children }) {
@@ -13,6 +15,9 @@ function RecipeProvider({ children }) {
   const [showInput, setShowInput] = useState(false);
   const [apiResult, setApiResult] = useState([]);
   const [alertState, setAlertState] = useState(true);
+  const [catListResult, setCatListResult] = useState([]);
+  const [toggle, setToggle] = useState(true);
+  const [textState, setTextState] = useState('');
   const alertMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
 
   const ingredientAPI = async (ingredient, title) => {
@@ -20,7 +25,6 @@ function RecipeProvider({ children }) {
       const data = await fetchIngredientFoodAPI(ingredient);
       const { meals } = data;
       setApiResult(meals);
-      console.log(data);
       if (!meals) global.alert(alertMsg);
       return meals;
     }
@@ -28,7 +32,6 @@ function RecipeProvider({ children }) {
       const data = await fetchIngredientDrinkAPI(ingredient);
       const { drinks } = data;
       setApiResult(drinks);
-      console.log(data);
       if (!drinks) global.alert(alertMsg);
       return drinks;
     }
@@ -68,6 +71,46 @@ function RecipeProvider({ children }) {
     }
   };
 
+  const recipeDrinkAPI = async () => {
+    const data = await fetchRecipeDrinkAPI();
+    const { drinks } = data;
+    setApiResult(drinks);
+    if (!drinks) global.alert(alertMsg);
+    return drinks;
+  };
+
+  const foodCatListAPI = async () => {
+    const data = await fetchFoodCatListAPI();
+    const { meals } = data;
+    setCatListResult(meals);
+    if (!meals) global.alert(alertMsg);
+    return meals;
+  };
+
+  const drinkCatListAPI = async () => {
+    const data = await fetchDrinkCatListAPI();
+    const { drinks } = data;
+    setCatListResult(drinks);
+    if (!drinks) global.alert(alertMsg);
+    return drinks;
+  };
+
+  const foodCatFilterAPI = async (category) => {
+    const data = await fetchFoodCatFilterAPI(category);
+    const { meals } = data;
+    setApiResult(meals);
+    if (!meals) global.alert(alertMsg);
+    return meals;
+  };
+
+  const drinkCatFilterAPI = async (category) => {
+    const data = await fetchDrinkCatFilterAPI(category);
+    const { drinks } = data;
+    setApiResult(drinks);
+    if (!drinks) global.alert(alertMsg);
+    return drinks;
+  };
+
   const contextValue = {
     email,
     setEmail,
@@ -80,10 +123,20 @@ function RecipeProvider({ children }) {
     ingredientAPI,
     nameAPI,
     firstLetterAPI,
+    recipeDrinkAPI,
+    foodCatListAPI,
+    drinkCatListAPI,
+    foodCatFilterAPI,
+    drinkCatFilterAPI,
     apiResult,
     setApiResult,
     alertState,
-    setAlertState };
+    setAlertState,
+    catListResult,
+    toggle,
+    setToggle,
+    textState,
+    setTextState };
 
   return (
     <RecipeContext.Provider

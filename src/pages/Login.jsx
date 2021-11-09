@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import Button from '../components/Button';
-import rockGlass from '../images/rockGlass.svg';
 
 import '../styles/Login.css';
 
@@ -34,9 +33,8 @@ function Login(props) {
   const EMAIL_REGEX = /.+@.+\..+/;
 
   return (
-    <div className="login-container">
-      <img src={ rockGlass } alt="rockGlass" />
-      <form className="login">
+    <form className="login">
+      <div className="login-container">
         <label htmlFor="email-login">
           <h5>E-mail</h5>
           <input
@@ -63,8 +61,8 @@ function Login(props) {
           disabled={ password.length <= MIN_CHARACTER || !EMAIL_REGEX.test(email) }
           onClick={ handleClick }
         />
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 
