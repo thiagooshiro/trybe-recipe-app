@@ -2,6 +2,9 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import Button from '../components/Button';
+import rockGlass from '../images/rockGlass.svg';
+
+import '../styles/Login.css';
 
 function Login(props) {
   const {
@@ -31,30 +34,37 @@ function Login(props) {
   const EMAIL_REGEX = /.+@.+\..+/;
 
   return (
-    <form>
-      <input
-        type="email"
-        data-testid="email-input"
-        placeholder="E-mail"
-        value={ email }
-        onChange={ ({ target }) => handleChange(target, setEmail) }
-      />
-
-      <input
-        type="password"
-        data-testid="password-input"
-        placeholder="Senha"
-        value={ password }
-        onChange={ ({ target }) => handleChange(target, setPassword) }
-      />
-
-      <Button
-        text="Entrar"
-        dataTestId="login-submit-btn"
-        disabled={ password.length <= MIN_CHARACTER || !EMAIL_REGEX.test(email) }
-        onClick={ handleClick }
-      />
-    </form>
+    <div className="login-container">
+      <img src={ rockGlass } alt="rockGlass" />
+      <form className="login">
+        <label htmlFor="email-login">
+          <h5>E-mail</h5>
+          <input
+            type="email"
+            data-testid="email-input"
+            placeholder="E-mail"
+            value={ email }
+            onChange={ ({ target }) => handleChange(target, setEmail) }
+          />
+        </label>
+        <label htmlFor="email-login">
+          <h5>Senha</h5>
+          <input
+            type="password"
+            data-testid="password-input"
+            placeholder="Senha"
+            value={ password }
+            onChange={ ({ target }) => handleChange(target, setPassword) }
+          />
+        </label>
+        <Button
+          text="Entrar"
+          dataTestId="login-submit-btn"
+          disabled={ password.length <= MIN_CHARACTER || !EMAIL_REGEX.test(email) }
+          onClick={ handleClick }
+        />
+      </form>
+    </div>
   );
 }
 

@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/Card.css';
+
 function ThumbCards({ keyId, result }) {
   const { strMeal, strMealThumb, strDrink, strDrinkThumb } = result;
 
   return (
-    <div data-testid={ `${keyId}-recipe-card` }>
+    <div data-testid={ `${keyId}-recipe-card` } className="item-card">
       <img
         alt={ strMeal || strDrink }
         src={ strMealThumb || strDrinkThumb }

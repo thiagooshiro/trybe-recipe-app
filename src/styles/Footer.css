@@ -1,11 +1,15 @@
 .bottom-menu {
   align-items: center;
-  background-color: orange;
+  background-color: #d6470f;
   bottom: 0;
   display: flex;
   justify-content: space-between;
   margin-bottom: 0;
-  padding: 0.5rem;
+  padding: 0.6rem 2rem;
   position: fixed;
   width: 360px;
+}
+
+.bottom-menu img {
+  height: 1.5rem;
 }
