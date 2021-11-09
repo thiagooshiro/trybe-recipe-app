@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ThumbCards from '../components/ThumbCards';
 import RecipeContext from '../context/RecipeContext';
@@ -30,6 +31,12 @@ function Bebidas({ history }) {
     onLoadList();
   }, []);
 
+  const handleAllFilter = async () => {
+    await recipeDrinkAPI();
+    setTextState('');
+    setToggle(true);
+  };
+
   const handleFilter = async ({ target }) => {
     if (toggle && textState !== target.innerText) {
       await drinkCatFilterAPI(target.innerText);
@@ -59,6 +66,11 @@ function Bebidas({ history }) {
   return (
     <div>
       <Header title="Bebidas" history={ history } />
+      { catListResult && <Button
+        text="All"
+        dataTestId="All-category-filter"
+        onClick={ handleAllFilter }
+      />}
       {catListResult && catListResult.slice(0, CAT_LIST_RANGE).map((cat, i) => (
         <Button
           key={ i }
@@ -73,11 +85,13 @@ function Bebidas({ history }) {
           : apiResult
             .slice(0, RESULTS_PER_PAGE)
             .map((mealOrDrink, i) => (
-              <ThumbCards
-                key={ i }
-                keyId={ i }
-                result={ mealOrDrink }
-              />
+              <Link key={ i } to={ `/bebidas/${mealOrDrink.idDrink}` }>
+                <ThumbCards
+                  key={ i }
+                  keyId={ i }
+                  result={ mealOrDrink }
+                />
+              </Link>
             ))
       }
       <Footer />
