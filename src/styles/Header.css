@@ -8,7 +8,6 @@ header {
   justify-content: space-between;
   margin-top: 0;
   padding: 0.5rem 1.2rem;
-  position: fixed;
   width: 360px;
 }
 
@@ -31,20 +30,34 @@ header button {
 .search-container {
   align-items: center;
   background-color: rgb(226, 226, 226);
+  flex-wrap: wrap;
   font-family: Ubuntu , sans-serif;
   font-size: 15px;
-  justify-content: space-between;
+  margin-top: 13px;
+  padding: 0.5rem;
+  position: relative;
   width: 360px;
 }
 
 .search-container button {
   background-color: rgb(173, 2, 2);
+  border-radius: 5px;
   color: white;
-  display: inline-block;
   font-weight: 700;
-  padding: 5px 10px;
+  padding: 3px 10px;
   text-align: center;
   text-transform: lowercase;
+}
+
+.search-container label {
+  font-size: 15px;
+  padding: 5px;
+}
+
+.search-container input {
+  border: 0.5px solid rgb(173, 2, 2);
+  border-radius: 5px;
+  font-size: 15px;
 }
 
 .header-container {
