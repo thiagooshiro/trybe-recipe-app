@@ -68,12 +68,12 @@ function Comidas({ history }) {
   return (
     <div>
       <Header title="Comidas" history={ history } />
-      { catListResult && <Button
+      {catListResult && <Button
         text="All"
         dataTestId="All-category-filter"
         onClick={ handleAllFilter }
       />}
-      { catListResult && catListResult.slice(0, CAT_LIST_RANGE).map((cat, i) => (
+      {catListResult && catListResult.slice(0, CAT_LIST_RANGE).map((cat, i) => (
         <Button
           key={ i }
           text={ cat.strCategory }
@@ -87,7 +87,10 @@ function Comidas({ history }) {
           : apiResult
             .slice(0, RESULTS_PER_PAGE)
             .map((mealOrDrink, i) => (
-              <Link key={ i } to={ `/comidas/${mealOrDrink.idMeal}` }>
+              <Link
+                key={ i }
+                to={ `/comidas/${mealOrDrink.idMeal}` }
+              >
                 <ThumbCards
                   keyId={ i }
                   result={ mealOrDrink }

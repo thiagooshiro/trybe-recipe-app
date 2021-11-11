@@ -10,7 +10,8 @@ function Login(props) {
     email,
     setEmail,
     password,
-    setPassword } = useContext(RecipeContext);
+    setPassword,
+  } = useContext(RecipeContext);
 
   useEffect(() => {
     localStorage.setItem('mealsToken', null);
