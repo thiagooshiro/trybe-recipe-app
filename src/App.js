@@ -13,6 +13,7 @@ import ExplorarComidas from './pages/explorar/ExplorarComidas';
 import ExplorarBebidas from './pages/explorar/ExplorarBebidas';
 
 import './App.css';
+import ReceitasProgresso from './pages/receitas/ReceitasProgresso';
 
 function App() {
   return (
@@ -26,7 +27,9 @@ function App() {
         <Route exact path="/perfil" component={ Perfil } />
         <Route exact path="/explorar" component={ Explorar } />
         <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
-        <Route exact path="/explorar/bebidas" components={ ExplorarBebidas } />
+        <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />
+        <Route exact path="/comidas/:id/in-progress" component={ ReceitasProgresso } />
+        <Route exact path="/bebidas/:id/in-progress" component={ ReceitasProgresso } />
       </Switch>
     </RecipeProvider>
   );
