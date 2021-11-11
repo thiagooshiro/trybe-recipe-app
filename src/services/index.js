@@ -77,3 +77,13 @@ export const fetchDrinkCatFilterAPI = async (category) => {
   const result = await endpoint.json();
   return result;
 };
+
+// req 33
+export const fetchDetailsAPI = async (mealOrDrink, id) => {
+  const endpoint = await fetch(`https://www.the${mealOrDrink}db.com/api/json/v1/1/lookup.php?i=${id}`);
+
+  const result = await endpoint.json();
+  /*   if (mealOrDrink === 'meal') ;
+  if (mealOrDrink === 'cocktails') setDrinkInfo(result) */
+  return result;
+};

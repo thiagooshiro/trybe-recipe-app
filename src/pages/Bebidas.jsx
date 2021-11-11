@@ -85,7 +85,10 @@ function Bebidas({ history }) {
           : apiResult
             .slice(0, RESULTS_PER_PAGE)
             .map((mealOrDrink, i) => (
-              <Link key={ i } to={ `/bebidas/${mealOrDrink.idDrink}` }>
+              <Link
+                key={ i }
+                to={ `/bebidas/${mealOrDrink.idDrink}` }
+              >
                 <ThumbCards
                   key={ i }
                   keyId={ i }
