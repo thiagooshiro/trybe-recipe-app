@@ -20,6 +20,16 @@ function RecipeProvider({ children }) {
   const [textState, setTextState] = useState('');
   const [resultDetails, setResultDetails] = useState('');
   const [recomendation, setRecomendation] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+  /* [{
+    id: '',
+    type: '',
+    area: '',
+    category: '',
+    alcoholicOrNot: '',
+    name: '',
+    image: '',
+  }] */
   const alertMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
 
   const ingredientAPI = async (ingredient, title) => {
@@ -173,6 +183,8 @@ function RecipeProvider({ children }) {
     recomendation,
     setRecomendation,
     recomendationAPI,
+    favorites,
+    setFavorites,
   };
 
   return (

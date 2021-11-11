@@ -1,12 +1,12 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import Button from '../components/Button';
-import shareIcon from '../images/shareIcon.svg';
+import handleHistoryPush from '../helpers/Functions';
+import ShareButton from '../components/ShareButton';
+import FavoriteButton from '../components/FavoriteButton';
 
-function Detalhes({ match: { url, path, params: { id } } }) {
-  const [copy, setCopy] = useState(false);
-
+function Detalhes({ history, match: { url, path, params: { id } } }) {
   const { detailsAPI,
     resultDetails,
     setResultDetails,
@@ -59,7 +59,6 @@ function Detalhes({ match: { url, path, params: { id } } }) {
 
   return (
     <main>
-      {path.includes('bebidas') ? <p>bebidas detalhes</p> : <p>comidas detalhes</p>}
       <img
         src={ strMealThumb || strDrinkThumb }
         alt={ strDrink || strMeal }
@@ -69,25 +68,8 @@ function Detalhes({ match: { url, path, params: { id } } }) {
       <h3 data-testid="recipe-title">
         {strDrink || strMeal}
       </h3>
-      <Button
-        text={
-          !copy ? <img
-            alt="share-icon"
-            src={ shareIcon }
-          />
-            : <p>Link copiado!</p>
-        }
-        dataTestId="share-btn"
-        onClick={ () => {
-          navigator.clipboard.writeText(`http://localhost:3000${url}`);
-          setCopy(true);
-        } }
-      />
-      <Button
-        text="Favorite"
-        dataTestId="favorite-btn"
-        onClick={ () => console.log('Favorite') }
-      />
+      <ShareButton url={ url } id={ id } />
+      <FavoriteButton resultDetails={ resultDetails } path={ path } />
       <p data-testid="recipe-category">
         {`Categoria: ${path.includes('bebidas') ? strAlcoholic : strCategory}`}
       </p>
@@ -125,14 +107,14 @@ function Detalhes({ match: { url, path, params: { id } } }) {
             key={ index }
             data-testid={ `${index}-recomendation-card` }
           >
-            { recipe.idMeal || recipe.idDrink }
+            { recipe.strMeal || recipe.strDrink }
           </li>
         )) }
       </div>
       <Button
         text="Start Recipe"
         dataTestId="start-recipe-btn"
-        onClick={ () => console.log('Start Recipe') }
+        onClick={ () => handleHistoryPush(history, id, path) }
         style={ { position: 'fixed', bottom: '0px' } }
       />
     </main>
@@ -141,13 +123,7 @@ function Detalhes({ match: { url, path, params: { id } } }) {
 
 Detalhes.propTypes = {
   match: PropTypes.objectOf(PropTypes.object).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default Detalhes;
-
-// imagem
-// título e icones de compartilhar e favoritos
-// seção ingredientes com detalhes dos ingredientes
-// seção modo de preparar com instruções de preparo
-// aba recomendadas com duas imagens de receitas recomendadas
-// botão de iniciar a receita
