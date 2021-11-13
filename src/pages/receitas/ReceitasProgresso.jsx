@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import RecipeContext from '../../context/RecipeContext';
-
 import ShareButton from '../../components/ShareButton';
 
 import '../../styles/ReceitasProgresso.css';
