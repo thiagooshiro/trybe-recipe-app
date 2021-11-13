@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
-import Button from '../components/Button';
-import handleHistoryPush from '../helpers/Functions';
 import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
+import StartRecipeButton from '../components/StartRecipeButton';
 
 function Detalhes({ history, match: { url, path, params: { id } } }) {
   const { detailsAPI,
@@ -13,6 +12,7 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
     recomendationAPI,
     recomendation,
     setRecomendation,
+    setRecipeDone,
   } = useContext(RecipeContext);
 
   const {
@@ -55,6 +55,7 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
   useEffect(() => {
     detailsResult();
     renderRecomendation();
+    setRecipeDone(JSON.parse(localStorage.getItem('doneRecipes')));
   }, []);
 
   return (
@@ -111,11 +112,10 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
           </li>
         )) }
       </div>
-      <Button
-        text="Start Recipe"
-        dataTestId="start-recipe-btn"
-        onClick={ () => handleHistoryPush(history, id, path) }
-        style={ { position: 'fixed', bottom: '0px' } }
+      <StartRecipeButton
+        history={ history }
+        id={ id }
+        path={ path }
       />
     </main>
   );

@@ -1,14 +1,20 @@
 import React, { useContext, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import RecipeContext from '../../context/RecipeContext';
 
-import Button from '../../components/Button';
 import ShareButton from '../../components/ShareButton';
 
 import '../../styles/ReceitasProgresso.css';
+import FavoriteButton from '../../components/FavoriteButton';
+import DoneRecipeButton from '../../components/DoneRecipeButton';
+import Checkbox from '../../components/Checkbox';
 
 function ReceitasProgresso({ match: { url, path, params: { id } } }) {
-  const { resultDetails, detailsAPI, setResultDetails } = useContext(RecipeContext);
+  const {
+    resultDetails,
+    detailsAPI,
+    setResultDetails,
+    setRecipeStarted,
+  } = useContext(RecipeContext);
 
   const detailsResult = async () => {
     const api = await detailsAPI(id, path);
@@ -32,6 +38,9 @@ function ReceitasProgresso({ match: { url, path, params: { id } } }) {
 
   useEffect(() => {
     detailsResult();
+    return (!localStorage.getItem('inProgressRecipes'))
+      ? localStorage.setItem('inProgressRecipes', JSON.stringify([]))
+      : setRecipeStarted(JSON.parse(localStorage.getItem('inProgressRecipes')));
   }, []);
 
   const {
@@ -46,7 +55,6 @@ function ReceitasProgresso({ match: { url, path, params: { id } } }) {
 
   return (
     <main>
-      <p>OI!!!!</p>
       {path.includes('bebidas') ? <p>bebidas detalhes</p> : <p>comidas detalhes</p>}
       <img
         src={ strMealThumb || strDrinkThumb }
@@ -57,47 +65,30 @@ function ReceitasProgresso({ match: { url, path, params: { id } } }) {
       <h3 data-testid="recipe-title">
         {strDrink || strMeal}
       </h3>
-      <ShareButton url={ url } />
-      <Button
-        text="Favorite"
-        dataTestId="favorite-btn"
-        onClick={ () => console.log('Favorite') }
-      />
+      <ShareButton url={ url } id={ id } />
+      <FavoriteButton resultDetails={ resultDetails } path={ path } />
       <p data-testid="recipe-category">
         {`Categoria: ${path.includes('bebidas') ? strAlcoholic : strCategory}`}
       </p>
       <div id="ingredient-name-and-measure">
         <h4> Ingredients </h4>
-        { resultDetails && resultDetails.object
-        && Object.entries(resultDetails.object)
-          .map((ingredient, index) => (
-            <div
-              className="checkbox-container"
-              data-testid={ `${index}-ingredient-step` }
-              key={ index }
-            >
-              <input
-                type="checkbox"
-                id={ `checkbox-progress-${index}` }
-                name="checkbox-ingredients"
+        {resultDetails && resultDetails.object
+          && Object.entries(resultDetails.object)
+            .map((ingredient, index) => (
+              <div
+                className="checkbox-container"
+                data-testid={ `${index}-ingredient-step` }
                 key={ index }
-              />
-              <label htmlFor={ `checkbox-progress-${index}` }>
-                { (ingredient[1] !== null
-                  ? `${ingredient[0]}: ${ingredient[1]}`
-                  : `${ingredient[0]}`) }
-              </label>
-            </div>
-          ))}
+              >
+                <Checkbox ingredient={ ingredient } index={ index } />
+              </div>
+            ))}
       </div>
       <div data-testid="instructions">
         <h4>Instructions</h4>
         <p>{strInstructions}</p>
       </div>
-      <Button
-        dataTestId="finish-recipe-btn"
-        text="Finalizar Receita"
-      />
+      <DoneRecipeButton resultDetails={ resultDetails } path={ path } />
     </main>
   );
 }
