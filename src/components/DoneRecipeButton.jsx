@@ -26,7 +26,11 @@ function DoneRecipeButton({ resultDetails, path, history }) {
       : setRecipeDone(JSON.parse(localStorage.getItem('doneRecipes')))
   ), []);
 
-  const useDoneHandler = () => {
+  useEffect(() => {
+    localStorage.setItem('doneRecipes', JSON.stringify(recipeDone));
+  }, [recipeDone]);
+
+  const useDoneHandler = async () => {
     if (path.includes('comidas')) {
       const comida = {
         id: idMeal,
@@ -37,15 +41,15 @@ function DoneRecipeButton({ resultDetails, path, history }) {
         name: strMeal,
         image: strMealThumb,
         doneDate: new Date().toLocaleDateString(),
-        tags: strTags,
+        tags: !strTags ? null : strTags.split(','),
       };
-      if (recipeDone.some((recipe) => recipe.id.includes(idMeal))) {
+      if (recipeDone && recipeDone.some((recipe) => recipe.id.includes(idMeal))) {
         recipeDone.pop(comida);
-        setRecipeDone([...recipeDone]);
+        await setRecipeDone([...recipeDone]);
       } else {
-        setRecipeDone([...recipeDone, comida]);
+        await setRecipeDone([...recipeDone, comida]);
       }
-      localStorage.setItem('doneRecipes', JSON.stringify([...recipeDone]));
+      await localStorage.setItem('doneRecipes', JSON.stringify([...recipeDone]));
     } else {
       const bebida = {
         id: idDrink,
@@ -58,19 +62,16 @@ function DoneRecipeButton({ resultDetails, path, history }) {
         doneDate: new Date().toLocaleDateString(),
         tags: '',
       };
-      if (recipeDone.some((recipe) => recipe.id.includes(idDrink))) {
+      if (recipeDone && recipeDone.some((recipe) => recipe.id.includes(idDrink))) {
         recipeDone.pop(bebida);
-        setRecipeDone([...recipeDone]);
+        await setRecipeDone([...recipeDone]);
       } else {
-        setRecipeDone([...recipeDone, bebida]);
+        await setRecipeDone([...recipeDone, bebida]);
       }
+      await localStorage.setItem('doneRecipes', JSON.stringify(recipeDone));
     }
     history.push('/receitas-feitas');
   };
-
-  useEffect(() => {
-    localStorage.setItem('doneRecipes', JSON.stringify(recipeDone));
-  }, [recipeDone]);
 
   return (
     <Button

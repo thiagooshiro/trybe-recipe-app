@@ -93,7 +93,11 @@ function Comidas({ history }) {
               >
                 <ThumbCards
                   keyId={ i }
-                  result={ mealOrDrink }
+                  name={ mealOrDrink.strMeal }
+                  image={ mealOrDrink.strMealThumb }
+                  divDataTestID={ `${i}-recipe-card` }
+                  imageDataTestId={ `${i}-card-img` }
+                  nameDataTestId={ `${i}-card-name` }
                 />
               </Link>
             ))

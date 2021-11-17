@@ -90,9 +90,12 @@ function Bebidas({ history }) {
                 to={ `/bebidas/${mealOrDrink.idDrink}` }
               >
                 <ThumbCards
-                  key={ i }
                   keyId={ i }
-                  result={ mealOrDrink }
+                  name={ mealOrDrink.strDrink }
+                  image={ mealOrDrink.strDrinkThumb }
+                  divDataTestID={ `${i}-recipe-card` }
+                  imageDataTestId={ `${i}-card-img` }
+                  nameDataTestId={ `${i}-card-name` }
                 />
               </Link>
             ))

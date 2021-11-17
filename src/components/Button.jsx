@@ -9,6 +9,7 @@ function Button(props) {
     dataTestId,
     disabled,
     style,
+    src,
   } = props;
 
   return (
@@ -19,6 +20,7 @@ function Button(props) {
       disabled={ disabled }
       data-testid={ dataTestId }
       style={ style }
+      src={ src }
     >
       {text}
     </button>
@@ -32,6 +34,7 @@ Button.propTypes = {
   dataTestId: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
   style: PropTypes.objectOf(PropTypes.any).isRequired,
+  src: PropTypes.string.isRequired,
 };
 
 export default Button;

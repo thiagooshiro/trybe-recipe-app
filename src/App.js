@@ -19,6 +19,7 @@ import ExplorarComidasPorIngredientes
   from './pages/explorar/ExplorarComidasPorIngredientes';
 
 import './App.css';
+import ReceitasFeitas from './pages/receitas/ReceitasFeitas';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           path="/explorar/bebidas/ingredientes"
           component={ ExplorarBebidasPorIngredientes }
         />
+        <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
       </Switch>
     </RecipeProvider>
   );

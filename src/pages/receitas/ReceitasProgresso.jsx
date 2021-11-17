@@ -56,7 +56,6 @@ function ReceitasProgresso({ history, match: { url, path, params: { id } } }) {
 
   return (
     <main>
-      {path.includes('bebidas') ? <p>bebidas detalhes</p> : <p>comidas detalhes</p>}
       <img
         src={ strMealThumb || strDrinkThumb }
         alt={ strDrink || strMeal }

@@ -13,7 +13,6 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
     recomendationAPI,
     recomendation,
     setRecomendation,
-    setRecipeDone,
   } = useContext(RecipeContext);
 
   const {
@@ -56,7 +55,6 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
   useEffect(() => {
     detailsResult();
     renderRecomendation();
-    setRecipeDone(JSON.parse(localStorage.getItem('doneRecipes')));
   }, []);
 
   return (

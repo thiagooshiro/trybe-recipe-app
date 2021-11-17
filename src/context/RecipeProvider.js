@@ -25,6 +25,7 @@ function RecipeProvider({ children }) {
   const [recipeDone, setRecipeDone] = useState([]);
   const [isChecked, setIsChecked] = useState(1);
   const [allCheck, setAllCheck] = useState(false);
+  const [filterRecipeDone, setFilterRecipeDone] = useState(recipeDone);
   const alertMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
 
   const ingredientAPI = async (ingredient, title) => {
@@ -188,6 +189,8 @@ function RecipeProvider({ children }) {
     setIsChecked,
     allCheck,
     setAllCheck,
+    filterRecipeDone,
+    setFilterRecipeDone,
   };
 
   return (
