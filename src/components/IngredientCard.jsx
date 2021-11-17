@@ -22,4 +22,12 @@ function IngredientCard(props) {
   );
 }
 
+IngredientCard.propTypes = {
+  description: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  ingredient: PropTypes.string.isRequired,
+  key: PropTypes.number.isRequired,
+  mealOrDrink: PropTypes.string.isRequired,
+};
+
 export default IngredientCard;
