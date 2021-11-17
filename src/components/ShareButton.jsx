@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import shareIcon from '../images/shareIcon.svg';
 
+const copy = require('clipboard-copy'); // testando biblioteca
+
 function ShareButton({ url }) {
-  const [copy, setCopy] = useState(false);
+  const [copyTo, setCopy] = useState(false);
 
   return (
     <Button
       text={
-        !copy ? <img
+        !copyTo ? <img
           alt="share-icon"
           src={ shareIcon }
         />
@@ -17,7 +19,7 @@ function ShareButton({ url }) {
       }
       dataTestId="share-btn"
       onClick={ () => {
-        navigator.clipboard.writeText(`http://localhost:3000${url}`);
+        copy(`http://localhost:3000${url}`); // testando window.navigator no evaluator do gitHub Req. 43.
         setCopy(true);
       } }
     />);

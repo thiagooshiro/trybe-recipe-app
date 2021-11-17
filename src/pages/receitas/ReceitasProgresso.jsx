@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../../context/RecipeContext';
@@ -8,7 +9,7 @@ import FavoriteButton from '../../components/FavoriteButton';
 import DoneRecipeButton from '../../components/DoneRecipeButton';
 import Checkbox from '../../components/Checkbox';
 
-function ReceitasProgresso({ match: { url, path, params: { id } } }) {
+function ReceitasProgresso({ history, match: { url, path, params: { id } } }) {
   const {
     resultDetails,
     detailsAPI,
@@ -80,7 +81,13 @@ function ReceitasProgresso({ match: { url, path, params: { id } } }) {
                 data-testid={ `${index}-ingredient-step` }
                 key={ index }
               >
-                <Checkbox ingredient={ ingredient } index={ index } />
+                <Checkbox
+                  ingredient={ ingredient }
+                  index={ index }
+                  path={ path }
+                  resultDetails={ resultDetails }
+                  id={ id }
+                />
               </div>
             ))}
       </div>
@@ -88,13 +95,19 @@ function ReceitasProgresso({ match: { url, path, params: { id } } }) {
         <h4>Instructions</h4>
         <p>{strInstructions}</p>
       </div>
-      <DoneRecipeButton resultDetails={ resultDetails } path={ path } />
+      <DoneRecipeButton
+        resultDetails={ resultDetails }
+        path={ path }
+        counter={ resultDetails.object }
+        history={ history }
+      />
     </main>
   );
 }
 
 ReceitasProgresso.propTypes = {
   match: PropTypes.objectOf(PropTypes.object).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default ReceitasProgresso;

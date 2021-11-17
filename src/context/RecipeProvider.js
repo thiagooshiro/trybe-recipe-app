@@ -23,6 +23,8 @@ function RecipeProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
   const [recipeStarted, setRecipeStarted] = useState([]);
   const [recipeDone, setRecipeDone] = useState([]);
+  const [isChecked, setIsChecked] = useState(1);
+  const [allCheck, setAllCheck] = useState(false);
   const alertMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
 
   const ingredientAPI = async (ingredient, title) => {
@@ -182,6 +184,10 @@ function RecipeProvider({ children }) {
     setRecipeStarted,
     recipeDone,
     setRecipeDone,
+    isChecked,
+    setIsChecked,
+    allCheck,
+    setAllCheck,
   };
 
   return (
