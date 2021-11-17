@@ -11,6 +11,12 @@ import Perfil from './pages/Perfil';
 import Explorar from './pages/Explorar';
 import ExplorarComidas from './pages/explorar/ExplorarComidas';
 import ExplorarBebidas from './pages/explorar/ExplorarBebidas';
+import ReceitasProgresso from './pages/receitas/ReceitasProgresso';
+
+import ExplorarBebidasPorIngredientes
+  from './pages/explorar/ExplorarBebidasPorIngredientes';
+import ExplorarComidasPorIngredientes
+  from './pages/explorar/ExplorarComidasPorIngredientes';
 
 import './App.css';
 
@@ -26,7 +32,19 @@ function App() {
         <Route exact path="/perfil" component={ Perfil } />
         <Route exact path="/explorar" component={ Explorar } />
         <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
-        <Route exact path="/explorar/bebidas" components={ ExplorarBebidas } />
+        <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />
+        <Route exact path="/comidas/:id/in-progress" component={ ReceitasProgresso } />
+        <Route exact path="/bebidas/:id/in-progress" component={ ReceitasProgresso } />
+        <Route
+          exact
+          path="/explorar/comidas/ingredientes"
+          component={ ExplorarComidasPorIngredientes }
+        />
+        <Route
+          exact
+          path="/explorar/bebidas/ingredientes"
+          component={ ExplorarBebidasPorIngredientes }
+        />
       </Switch>
     </RecipeProvider>
   );

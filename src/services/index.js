@@ -87,3 +87,27 @@ export const fetchDetailsAPI = async (mealOrDrink, id) => {
   if (mealOrDrink === 'cocktails') setDrinkInfo(result) */
   return result;
 };
+
+export const fetchRandomFoodAPI = async () => {
+  const endpoint = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+  const result = await endpoint.json();
+  return result;
+};
+
+export const fetchRandomDrinkAPI = async () => {
+  const endpoint = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+  const result = await endpoint.json();
+  return result;
+};
+
+export const fetchFoodIngredients = async () => {
+  const endpoint = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+  const result = await endpoint.json();
+  return result;
+};
+
+export const fetchDrinkIngredients = async () => {
+  const endpoint = await fetch('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
+  const result = await endpoint.json();
+  return result;
+};

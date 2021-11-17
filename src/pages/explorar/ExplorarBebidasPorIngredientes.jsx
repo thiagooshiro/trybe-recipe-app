@@ -1,14 +1,14 @@
 import React from 'react';
-// import { fetchFoodIngredients } from '../../services';
+// import { fetchDrinkIngredients } from '../../services';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
-function ExplorarComidasPorIngredientes() {
+function ExplorarBebidasPorIngredientes() {
   return (
     <div>
       <Header />
-      <p>comidas ingredientes</p>
+      <p>bebidas ingredientes</p>
       {/* <div data-testid={ `${index}-ingredient-card` }>
         <img
           data-testid={ `${index}-card-img` }
@@ -26,4 +26,4 @@ function ExplorarComidasPorIngredientes() {
   );
 }
 
-export default ExplorarComidasPorIngredientes;
+export default ExplorarBebidasPorIngredientes;
