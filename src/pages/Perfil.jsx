@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 
 function Perfil() {
+  const [userLogin, setUserLogin] = useState('');
+  useEffect(() => {
+    const userEmail = localStorage.getItem('user');
+    const localStorageEmail = JSON.parse(userEmail);
+    setUserLogin(localStorageEmail.email);
+  }, []);
+
+  const handleClick = () => {
+    localStorage.clear();
+  };
+
   return (
-    <Header title="Perfil" />
+    <div>
+      <Header title="Perfil" />
+      <span data-testid="profile-email">{userLogin}</span>
+      <button type="button" data-testid="profile-done-btn"> Receitas Feitas </button>
+      <button type="button" data-testid="profile-favorite-btn">Receitas Favoritas</button>
+      <Link to="/">
+        <button
+          type="button"
+          data-testid="profile-logout-btn"
+          onClick={ handleClick }
+        >
+          Sair
+        </button>
+      </Link>
+    </div>
   );
 }
 
