@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import RecipeContext from '../context/RecipeContext';
 
-function DoneRecipeButton({ resultDetails, path }) {
-  const { recipeDone, setRecipeDone } = useContext(RecipeContext);
+function DoneRecipeButton({ resultDetails, path, history }) {
+  const { recipeDone, setRecipeDone, allCheck } = useContext(RecipeContext);
 
   const {
     idDrink,
@@ -64,6 +65,7 @@ function DoneRecipeButton({ resultDetails, path }) {
         setRecipeDone([...recipeDone, bebida]);
       }
     }
+    history.push('/receitas-feitas');
   };
 
   useEffect(() => {
@@ -72,9 +74,10 @@ function DoneRecipeButton({ resultDetails, path }) {
 
   return (
     <Button
-      data-testid="finish-recipe-btn"
+      dataTestId="finish-recipe-btn"
       text="Finalizar Receita"
       onClick={ useDoneHandler }
+      disabled={ !allCheck }
     />
   );
 }
@@ -82,6 +85,7 @@ function DoneRecipeButton({ resultDetails, path }) {
 DoneRecipeButton.propTypes = {
   path: PropTypes.objectOf(PropTypes.any).isRequired,
   resultDetails: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default DoneRecipeButton;
