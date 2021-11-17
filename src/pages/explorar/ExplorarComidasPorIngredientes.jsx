@@ -1,26 +1,33 @@
-import React from 'react';
-// import { fetchFoodIngredients } from '../../services';
+import React, { useState, useEffect } from 'react';
+import { fetchFoodIngredients } from '../../services';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import IngredientCard from '../../components/IngredientCard';
 
 function ExplorarComidasPorIngredientes() {
+  const [mealIngredient, setMealIngredient] = useState([]);
+  const MAX_INGREDIENTS = 12;
+  useEffect(() => {
+    const fetchMealIngredient = async () => {
+      const ingredient = await fetchFoodIngredients();
+      setMealIngredient(ingredient.meals);
+    };
+    fetchMealIngredient();
+    console.log(mealIngredient);
+  }, []);
   return (
     <div>
       <Header />
-      <p>comidas ingredientes</p>
-      {/* <div data-testid={ `${index}-ingredient-card` }>
-        <img
-          data-testid={ `${index}-card-img` }
-          alt={ `${ingredient}` }
-          src={ `https://www.themealdb.com/images/ingredients/{nome-do-ingrediente}.png` }
+      {mealIngredient && mealIngredient.slice(0, MAX_INGREDIENTS).map((ingri, index) => (
+        <IngredientCard
+          ingredient={ ingri.strIngredient }
+          index={ index }
+          description={ ingri.strIngredient }
+          key={ index }
+          mealOrDrink="meal"
         />
-        <h6
-          data-testid={ `${index}-card-name` }
-        >
-          { ingredient }
-        </h6>
-      </div> */}
+      ))}
       <Footer />
     </div>
   );
