@@ -18,7 +18,7 @@ function ExplorarComidasPorIngredientes() {
   }, []);
   return (
     <div>
-      <Header />
+      <Header title="Explorar Ingredientes" />
       {mealIngredient && mealIngredient.slice(0, MAX_INGREDIENTS).map((ingri, index) => (
         <IngredientCard
           ingredient={ ingri.strIngredient }

@@ -23,10 +23,11 @@ function RecipeProvider({ children }) {
   const [favorites, setFavorites] = useState([]);
   const [recipeStarted, setRecipeStarted] = useState([]);
   const [recipeDone, setRecipeDone] = useState([]);
-  const [isChecked, setIsChecked] = useState(1);
+  const [isChecked, setIsChecked] = useState(0);
   const [allCheck, setAllCheck] = useState(false);
   const [filterRecipeDone, setFilterRecipeDone] = useState(recipeDone);
   const alertMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
+  const [arr, setArr] = useState([]);
 
   const ingredientAPI = async (ingredient, title) => {
     if (title.includes('Comidas')) { // Manter atenção para caso o teste retorne erro devido ao case sensitive.
@@ -191,6 +192,8 @@ function RecipeProvider({ children }) {
     setAllCheck,
     filterRecipeDone,
     setFilterRecipeDone,
+    arr,
+    setArr,
   };
 
   return (

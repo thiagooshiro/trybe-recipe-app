@@ -7,8 +7,8 @@ import Footer from '../../components/Footer';
 function ExplorarBebidasPorIngredientes() {
   return (
     <div>
-      <Header />
-      <p>bebidas ingredientes</p>
+      <Header title="Explorar Ingredientes" />
+      <p>Bebidas ingredientes</p>
       {/* <div data-testid={ `${index}-ingredient-card` }>
         <img
           data-testid={ `${index}-card-img` }

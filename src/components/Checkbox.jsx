@@ -1,55 +1,79 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/Card.css';
 import RecipeContext from '../context/RecipeContext';
 
-function Checkbox({ ingredient, index, /* path, */ resultDetails /* id */ }) {
+function Checkbox({ ingredient, index, path, resultDetails, id }) {
   const {
-    // recipeStarted,
-    // setRecipeStarted,
+    recipeStarted,
+    setRecipeStarted,
     isChecked,
     setIsChecked,
     setAllCheck,
+    arr,
   } = useContext(RecipeContext);
 
   const {
-    // idDrink,
-    // idMeal,
     object,
   } = resultDetails;
 
-  // Check handler deve funcionar onchange para incluir o ingrediente na chave correta do localStorage.
-  const useCheckHandler = ({ target }) => {
-    /* if (path.includes('comidas')) {
-      // const meal = {
-      //   [idMeal]: [target.value]
-      // };
-      if (recipeStarted.some((recipe) => recipe.idMeal.includes(target.value))) {
-        recipeStarted.idMeal.pop(target.value);
-        setRecipeStarted([...recipeStarted]);
-      } else {
-        setRecipeStarted({ meals: { [idMeal]: [target.value] } });
-        localStorage.setItem('inProgressRecipes', JSON.stringify(recipeStarted));
-      }
-    } else
-    //   const bebida = {
-    //     idDrink: [...idDrink, target.value],
-    //   };
-    if (recipeStarted.some((recipe) => recipe.idDrink.includes(target.value))) {
-      recipeStarted.idDrink.pop(target.value);
-      setRecipeStarted([...recipeStarted]);
+  const saver = async () => {
+    await localStorage.setItem('inProgressRecipes', JSON.stringify(recipeStarted));
+    await localStorage.setItem('arr', JSON.stringify(arr));
+  };
+  const cocktailRegister = async (target) => {
+    if (arr && arr.includes(target.value)) {
+      await arr.splice(arr.indexOf(target.value), 1);
     } else {
-      setRecipeStarted({ meals: { [idDrink]: [target.value] } });
-      localStorage.setItem('inProgressRecipes', JSON.stringify(recipeStarted));
-    } */
-    if (target.checked === false) {
+      await arr.push(target.value);
+    }
+    await setRecipeStarted({
+      cocktails: { [id]: arr },
+      ...recipeStarted,
+    });
+  };
+
+  const mealsRegister = async (target) => {
+    if (arr && arr.includes(target.value)) {
+      await arr.splice(arr.indexOf(target.value), 1);
+    } else {
+      await arr.push(target.value);
+    }
+    await setRecipeStarted({
+      ...recipeStarted,
+      meals: { [id]: arr },
+    });
+  };
+
+  const checker = async () => {
+    if (arr.length !== Object.keys(object).length) {
       setIsChecked(isChecked - 1);
-      if (isChecked !== Object.keys(object).length) setAllCheck(false);
+      setAllCheck(false);
     } else {
       setIsChecked(isChecked + 1);
-      if (isChecked === Object.keys(object).length) setAllCheck(true);
+      setAllCheck(true);
     }
   };
+
+  const ingredientRender = () => {
+    if (ingredient[1]) return (`${ingredient[0]}: ${ingredient[1]}`);
+    return `${ingredient[0]}`;
+  };
+
+  // Check handler deve funcionar onchange para incluir o ingrediente na chave correta do localStorage.
+  const useCheckHandler = async ({ target }) => {
+    if (path.includes('comidas')) {
+      mealsRegister(target);
+    } else {
+      cocktailRegister(target);
+    }
+    await saver();
+    await checker();
+  };
+
+  useEffect(() => {
+    localStorage.setItem('inProgressRecipes', JSON.stringify(recipeStarted));
+  }, [recipeStarted]);
 
   return (
     <label htmlFor={ `checkbox-progress-${index}` }>
@@ -61,10 +85,9 @@ function Checkbox({ ingredient, index, /* path, */ resultDetails /* id */ }) {
         key={ index }
         value={ `${ingredient[0]}` }
         onChange={ useCheckHandler }
+        checked={ arr && arr.includes(`${ingredient[0]}`) }
       />
-      {(ingredient[1] !== null
-        ? `${ingredient[0]}: ${ingredient[1]}`
-        : `${ingredient[0]}`)}
+      { ingredientRender() }
     </label>
   );
 }
@@ -73,6 +96,8 @@ Checkbox.propTypes = {
   ingredient: PropTypes.arrayOf(PropTypes.string).isRequired,
   resultDetails: PropTypes.objectOf(PropTypes.any).isRequired,
   index: PropTypes.number.isRequired,
+  path: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Checkbox;

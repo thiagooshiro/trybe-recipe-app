@@ -19,7 +19,7 @@ function ExplorarComidas() {
 
   return (
     <div className="container-food-explore">
-      <Header />
+      <Header title="Explorar Comidas" />
       <Link to="/explorar/comidas/ingredientes">
         <Button
           dataTestId="explore-by-ingredient"

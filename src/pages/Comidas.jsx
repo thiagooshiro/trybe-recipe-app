@@ -29,7 +29,6 @@ function Comidas({ history }) {
 
   useEffect(() => {
     onLoadList();
-    console.log(apiResult);
   }, []);
 
   const handleAllFilter = async () => {

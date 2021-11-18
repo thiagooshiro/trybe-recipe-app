@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import RecipeContext from '../../context/RecipeContext';
 import Button from '../../components/Button';
 import ThumbCards from '../../components/ThumbCards';
+import Header from '../../components/Header';
 
 function ReceitasFeitas() {
   const { setRecipeDone, recipeDone,
@@ -57,6 +58,7 @@ function ReceitasFeitas() {
 
   return (
     <div>
+      <Header title="Receitas Feitas" />
       <Button
         text="All"
         dataTestId="filter-by-all-btn"

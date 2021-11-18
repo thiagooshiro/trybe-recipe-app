@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 function Explorar() {
   return (
     <div className="container-explore">
-      <Header />
+      <Header title="Explorar" />
       <Link to="/explorar/comidas">
         <Button
           dataTestId="explore-food"

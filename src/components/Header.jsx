@@ -128,7 +128,12 @@ function Header({ title, history }) {
       </div>
     );
   }
-
+  const hiderTester = () => {
+    if (title.includes('Explorar')) return false;
+    if (title.includes('Perfil')) return false;
+    if (title.includes('Feitas')) return false;
+    return true;
+  };
   return (
     <header className="header-container">
       <Link to="/perfil">
@@ -141,15 +146,15 @@ function Header({ title, history }) {
 
       <h3 data-testid="page-title">{title}</h3>
 
-      <Button
+      { (hiderTester()) && <Button
         dataTestId="search-top-btn"
         onClick={ searchIconClick }
+        src={ searchIcon }
         text={ <img
           alt="search-icon"
           src={ searchIcon }
         /> }
-
-      />
+      /> }
       {showInput && renderSearch()}
     </header>
   );

@@ -44,7 +44,7 @@ function DoneRecipeButton({ resultDetails, path, history }) {
         tags: !strTags ? null : strTags.split(','),
       };
       if (recipeDone && recipeDone.some((recipe) => recipe.id.includes(idMeal))) {
-        recipeDone.pop(comida);
+        recipeDone.splice(recipeDone.indexOf(comida));
         await setRecipeDone([...recipeDone]);
       } else {
         await setRecipeDone([...recipeDone, comida]);
@@ -63,7 +63,7 @@ function DoneRecipeButton({ resultDetails, path, history }) {
         tags: '',
       };
       if (recipeDone && recipeDone.some((recipe) => recipe.id.includes(idDrink))) {
-        recipeDone.pop(bebida);
+        recipeDone.splice(recipeDone.indexOf(bebida));
         await setRecipeDone([...recipeDone]);
       } else {
         await setRecipeDone([...recipeDone, bebida]);
