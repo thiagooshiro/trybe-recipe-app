@@ -130,6 +130,7 @@ function Header({ title, history }) {
     );
   }
   const hiderTester = () => {
+    if (title.includes('Explorar Origem')) return true;
     if (title.includes('Explorar')) return false;
     if (title.includes('Perfil')) return false;
     if (title.includes('Feitas')) return false;

@@ -111,3 +111,10 @@ export const fetchDrinkIngredients = async () => {
   const result = await endpoint.json();
   return result;
 };
+
+//  requisito 78
+export const fetchMealsForArea = async (origin) => {
+  const endpoint = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${origin}`);
+  const result = endpoint.json();
+  return result;
+};

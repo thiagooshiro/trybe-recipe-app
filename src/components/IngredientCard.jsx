@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import '../styles/Card.css';
@@ -7,10 +7,6 @@ import RecipeContext from '../context/RecipeContext';
 function IngredientCard(props) {
   const { setSearchText, searchText } = useContext(RecipeContext);
   const { index, mealOrDrink, ingredient, description, key, name, history } = props;
-
-  useEffect(() => {
-
-  }, []);
 
   const handleClick = async () => {
     setSearchText(ingredient);

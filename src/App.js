@@ -17,6 +17,9 @@ import ExplorarBebidasPorIngredientes
   from './pages/explorar/ExplorarBebidasPorIngredientes';
 import ExplorarComidasPorIngredientes
   from './pages/explorar/ExplorarComidasPorIngredientes';
+import ExplorarArea from './pages/explorar/ExplorarArea';
+
+import NotFound from './pages/NotFound';
 
 import './App.css';
 import ReceitasFeitas from './pages/receitas/ReceitasFeitas';
@@ -34,6 +37,7 @@ function App() {
         <Route exact path="/explorar" component={ Explorar } />
         <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
         <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />
+        <Route exact path="/explorar/comidas/area" component={ ExplorarArea } />
         <Route exact path="/comidas/:id/in-progress" component={ ReceitasProgresso } />
         <Route exact path="/bebidas/:id/in-progress" component={ ReceitasProgresso } />
         <Route
@@ -47,6 +51,7 @@ function App() {
           component={ ExplorarBebidasPorIngredientes }
         />
         <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
+        <Route component={ NotFound } />
       </Switch>
     </RecipeProvider>
   );
