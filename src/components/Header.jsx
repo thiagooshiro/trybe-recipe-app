@@ -23,7 +23,8 @@ function Header({ title, history }) {
 
   const onLoadList = async () => {
     if (title === 'Comidas') await ingredientAPI(searchText, title);
-    if (title === 'Bebidas') await recipeDrinkAPI();
+    if (title === 'Bebidas' && !searchText) await recipeDrinkAPI();
+    if (title === 'Bebidas' && searchText) await ingredientAPI(searchText, title);
   };
 
   useEffect(() => {

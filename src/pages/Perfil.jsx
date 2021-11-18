@@ -19,7 +19,9 @@ function Perfil() {
     <div>
       <Header title="Perfil" />
       <span data-testid="profile-email">{userLogin && userLogin.email}</span>
-      <button type="button" data-testid="profile-done-btn"> Receitas Feitas </button>
+      <Link to="/receitas-feitas">
+        <button type="button" data-testid="profile-done-btn"> Receitas Feitas </button>
+      </Link>
       <button type="button" data-testid="profile-favorite-btn">Receitas Favoritas</button>
       <Link to="/">
         <button
