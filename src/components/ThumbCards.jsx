@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import '../styles/Card.css';
 import Button from './Button';
 import shareIcon from '../images/shareIcon.svg';
-
-// const copy = require('clipboard-copy');
+import FavoriteButton from './FavoriteButton';
 
 function ThumbCards({
   divDataTestID, buttonDataTestID,
@@ -14,19 +13,27 @@ function ThumbCards({
   category, categoryDataTestId,
   doneDate, dateDataTestId,
   tags, i, type,
-  areaOrAlcoholic, id,
+  areaOrAlcoholic, id, path,
 }) {
   const [copyTo, setCopy] = useState(false);
+
+  const dateHandler = () => {
+    if (doneDate) {
+      return (
+        <h3 data-testid={ dateDataTestId }>
+          {`Feita em ${doneDate}`}
+        </h3>
+      );
+    }
+  };
 
   const tagHandler = () => (
     <>
       <h3 data-testid={ categoryDataTestId }>
         {`${areaOrAlcoholic} - ${category}`}
       </h3>
-      <h3 data-testid={ dateDataTestId }>
-        {`Feita em ${doneDate}`}
-      </h3>
-      { tags && tags.map((tag, j) => (
+      { dateHandler() }
+      {tags && tags.map((tag, j) => (
         <h3
           data-testid={ `${i}-${tag}-horizontal-tag` }
           key={ j }
@@ -34,26 +41,49 @@ function ThumbCards({
           {tag}
         </h3>
       ))}
-
-      <Button
-        dataTestId={ buttonDataTestID }
-        src={ shareIcon }
-        text={
-          !copyTo ? <img
-            alt="share-icon"
-            src={ shareIcon }
-            style={ { width: '50px', height: '50px' } }
-          />
-            : <p>Link copiado!</p>
-        }
-        onClick={ () => {
-          window.navigator.clipboard.writeText(`http://localhost:3000/${type}s/${id}`); // testando window.navigator no evaluator do gitHub Req. 43.
-          setCopy(true);
-          console.log(id);
-        } }
-      />
     </>
   );
+
+  const shareButtonRender = () => {
+    if (category) {
+      return (
+        <Button
+          dataTestId={ buttonDataTestID }
+          src={ shareIcon }
+          text={
+            !copyTo ? <img
+              alt="share-icon"
+              src={ shareIcon }
+              style={ { width: '50px', height: '50px' } }
+            />
+              : <p>Link copiado!</p>
+          }
+          onClick={ () => {
+            window.navigator.clipboard.writeText(`http://localhost:3000/${type}s/${id}`); // testando window.navigator no evaluator do gitHub Req. 43.
+            setCopy(true);
+          } }
+        />
+      );
+    }
+  };
+
+  const favoriteButtonRender = () => {
+    if (path && path.includes('favoritas')) {
+      return (
+        <FavoriteButton
+          // resultDetails={ resultDetails }
+          id={ id }
+          name={ name }
+          image={ image }
+          category={ category }
+          buttonDataTestID={ `${i}-horizontal-favorite-btn` }
+          area={ areaOrAlcoholic }
+          alcoholicOrNot={ areaOrAlcoholic }
+          path={ `${type}s` }
+        />
+      );
+    }
+  };
 
   return (
 
@@ -73,27 +103,31 @@ function ThumbCards({
           {name}
         </h3>
       </Link>
-      { category && tagHandler()}
+      {category && tagHandler()}
+      {shareButtonRender()}
+      {favoriteButtonRender()}
     </div>
+
   );
 }
 
 ThumbCards.propTypes = {
-  divDataTestID: PropTypes.string.isRequired,
+  areaOrAlcoholic: PropTypes.string.isRequired,
   buttonDataTestID: PropTypes.string.isRequired,
   category: PropTypes.func.isRequired,
   categoryDataTestId: PropTypes.string.isRequired,
-  doneDate: PropTypes.string.isRequired,
   dateDataTestId: PropTypes.string.isRequired,
+  divDataTestID: PropTypes.string.isRequired,
+  doneDate: PropTypes.string.isRequired,
+  i: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   imageDataTestId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   nameDataTestId: PropTypes.string.isRequired,
   tags: PropTypes.string.isRequired,
-  i: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
   type: PropTypes.string.isRequired,
-  areaOrAlcoholic: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default ThumbCards;
