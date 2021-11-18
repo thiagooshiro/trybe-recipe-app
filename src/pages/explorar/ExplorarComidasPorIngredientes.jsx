@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { fetchFoodIngredients } from '../../services';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import IngredientCard from '../../components/IngredientCard';
 
-function ExplorarComidasPorIngredientes() {
+function ExplorarComidasPorIngredientes({ history }) {
   const [mealIngredient, setMealIngredient] = useState([]);
   const MAX_INGREDIENTS = 12;
   useEffect(() => {
@@ -16,6 +17,7 @@ function ExplorarComidasPorIngredientes() {
     fetchMealIngredient();
     console.log(mealIngredient);
   }, []);
+
   return (
     <div>
       <Header title="Explorar Ingredientes" />
@@ -26,11 +28,17 @@ function ExplorarComidasPorIngredientes() {
           description={ ingri.strIngredient }
           key={ index }
           mealOrDrink="meal"
+          name="comidas"
+          history={ history }
         />
       ))}
       <Footer />
     </div>
   );
 }
+
+ExplorarComidasPorIngredientes.propTypes = {
+  history: PropTypes.objectOf(PropTypes.object).isRequired,
+};
 
 export default ExplorarComidasPorIngredientes;

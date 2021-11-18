@@ -65,7 +65,6 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
   const renderRecomendation = async () => {
     const result = await recomendationAPI('', path);
     setRecomendation(result);
-    console.log(result);
   };
 
   useEffect(() => {
