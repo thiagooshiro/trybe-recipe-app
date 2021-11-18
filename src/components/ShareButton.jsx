@@ -5,7 +5,7 @@ import shareIcon from '../images/shareIcon.svg';
 
 const copy = require('clipboard-copy'); // testando biblioteca
 
-function ShareButton({ url }) {
+function ShareButton({ url, id }) {
   const [copyTo, setCopy] = useState(false);
 
   return (
@@ -19,7 +19,8 @@ function ShareButton({ url }) {
       }
       dataTestId="share-btn"
       onClick={ () => {
-        copy(`http://localhost:3000${url}`); // testando window.navigator no evaluator do gitHub Req. 43.
+        const mealOrDrink = url.includes('comidas') ? 'comidas' : 'bebidas';
+        copy(`http://localhost:3000/${mealOrDrink}/${id}`); // testando window.navigator no evaluator do gitHub Req. 43.
         setCopy(true);
       } }
     />);
@@ -27,6 +28,7 @@ function ShareButton({ url }) {
 
 ShareButton.propTypes = {
   url: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default ShareButton;

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ThumbCards from '../components/ThumbCards';
@@ -87,15 +86,17 @@ function Comidas({ history }) {
           : apiResult
             .slice(0, RESULTS_PER_PAGE)
             .map((mealOrDrink, i) => (
-              <Link
+              <ThumbCards
                 key={ i }
-                to={ `/comidas/${mealOrDrink.idMeal}` }
-              >
-                <ThumbCards
-                  keyId={ i }
-                  result={ mealOrDrink }
-                />
-              </Link>
+                keyId={ i }
+                name={ mealOrDrink.strMeal }
+                id={ mealOrDrink.idMeal }
+                type="comida"
+                image={ mealOrDrink.strMealThumb }
+                divDataTestID={ `${i}-recipe-card` }
+                imageDataTestId={ `${i}-card-img` }
+                nameDataTestId={ `${i}-card-name` }
+              />
             ))
       }
       <Footer />
