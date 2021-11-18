@@ -134,6 +134,7 @@ function Header({ title, history }) {
     if (title.includes('Explorar')) return false;
     if (title.includes('Perfil')) return false;
     if (title.includes('Feitas')) return false;
+    if (title.includes('Favoritas')) return false;
     return true;
   };
   return (

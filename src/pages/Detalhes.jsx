@@ -5,6 +5,7 @@ import RecipeContext from '../context/RecipeContext';
 import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
 import StartRecipeButton from '../components/StartRecipeButton';
+import DetailCard from '../components/DetailCard';
 
 function Detalhes({ history, match: { url, path, params: { id } } }) {
   const { detailsAPI,
@@ -16,12 +17,9 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
   } = useContext(RecipeContext);
 
   const {
-    strDrink,
     strMeal,
     strCategory,
     strInstructions,
-    strMealThumb,
-    strDrinkThumb,
     strYoutube,
     strAlcoholic,
   } = resultDetails;
@@ -46,6 +44,24 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
     setResultDetails({ ...result, object: obj });
   };
 
+  const renderFavoriteButton = () => {
+    if (resultDetails) {
+      return (
+        <FavoriteButton
+          // resultDetails={ resultDetails }
+          id={ resultDetails.idDrink || resultDetails.idMeal }
+          name={ resultDetails.strDrink || resultDetails.strMeal }
+          image={ resultDetails.strDrinkThumb || resultDetails.strMealThumb }
+          category={ resultDetails.strCategory }
+          buttonDataTestID="favorite-btn"
+          area={ resultDetails.strArea }
+          alcoholicOrNot={ resultDetails.strAlcoholic }
+          path={ path }
+        />
+      );
+    }
+  };
+
   const renderRecomendation = async () => {
     const result = await recomendationAPI('', path);
     setRecomendation(result);
@@ -58,7 +74,7 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
 
   return (
     <main>
-      <img
+      {/* <img
         src={ strMealThumb || strDrinkThumb }
         alt={ strDrink || strMeal }
         data-testid="recipe-photo"
@@ -66,9 +82,10 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
       />
       <h3 data-testid="recipe-title">
         {strDrink || strMeal}
-      </h3>
+      </h3> */}
+      <DetailCard resultDetails={ resultDetails } />
       <ShareButton url={ url } id={ id } />
-      <FavoriteButton resultDetails={ resultDetails } path={ path } />
+      { renderFavoriteButton() }
       <p data-testid="recipe-category">
         {`Categoria: ${path.includes('bebidas') ? strAlcoholic : strCategory}`}
       </p>
@@ -120,8 +137,8 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
 }
 
 Detalhes.propTypes = {
-  match: PropTypes.objectOf(PropTypes.object).isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default Detalhes;

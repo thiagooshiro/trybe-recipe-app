@@ -26,6 +26,7 @@ function RecipeProvider({ children }) {
   const [isChecked, setIsChecked] = useState(0);
   const [allCheck, setAllCheck] = useState(false);
   const [filterRecipeDone, setFilterRecipeDone] = useState(recipeDone);
+  const [filterFavorites, setFilterFavorites] = useState(favorites);
   const alertMsg = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
   const [arr, setArr] = useState([]);
 
@@ -194,6 +195,8 @@ function RecipeProvider({ children }) {
     setFilterRecipeDone,
     arr,
     setArr,
+    filterFavorites,
+    setFilterFavorites,
   };
 
   return (

@@ -23,6 +23,7 @@ import NotFound from './pages/NotFound';
 
 import './App.css';
 import ReceitasFeitas from './pages/receitas/ReceitasFeitas';
+import ReceitasFavoritas from './pages/receitas/ReceitasFavoritas';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           component={ ExplorarBebidasPorIngredientes }
         />
         <Route exact path="/receitas-feitas" component={ ReceitasFeitas } />
+        <Route exact path="/receitas-favoritas" component={ ReceitasFavoritas } />
         <Route component={ NotFound } />
       </Switch>
     </RecipeProvider>

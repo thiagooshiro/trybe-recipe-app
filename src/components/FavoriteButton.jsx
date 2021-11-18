@@ -5,20 +5,13 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import RecipeContext from '../context/RecipeContext';
 
-function FavoriteButton({ resultDetails, path }) {
+function FavoriteButton({ buttonDataTestID,
+  image,
+  name,
+  category,
+  area,
+  alcoholicOrNot, id, path }) {
   const { favorites, setFavorites } = useContext(RecipeContext);
-
-  const {
-    idDrink,
-    idMeal,
-    strCategory,
-    strAlcoholic,
-    strDrink,
-    strMeal,
-    strArea,
-    strDrinkThumb,
-    strMealThumb,
-  } = resultDetails;
 
   useEffect(() => (
     (!localStorage.getItem('favoriteRecipes'))
@@ -27,40 +20,22 @@ function FavoriteButton({ resultDetails, path }) {
   ), []);
 
   const useFavoritesHandler = () => {
-    if (path.includes('comidas')) {
-      const comida = {
-        id: idMeal,
-        type: 'comida',
-        area: strArea,
-        category: strCategory,
-        alcoholicOrNot: '',
-        name: strMeal,
-        image: strMealThumb,
-      };
-      if (favorites.some((recipe) => recipe.id.includes(idMeal))) {
-        favorites.pop(comida);
-        setFavorites([...favorites]);
-      } else {
-        setFavorites([...favorites, comida]);
-      }
-      localStorage.setItem('favoriteRecipes', JSON.stringify([...favorites]));
+    const recipe = {
+      id,
+      type: (path.includes('comidas') ? 'comida' : 'bebida'),
+      area: (path.includes('bebidas') ? '' : area),
+      category,
+      alcoholicOrNot: (path.includes('comidas') ? '' : alcoholicOrNot),
+      name,
+      image,
+    };
+    if (favorites.some(() => recipe.id.includes(id))) {
+      favorites.splice(favorites.indexOf(recipe));
+      setFavorites([...favorites]);
     } else {
-      const bebida = {
-        id: idDrink,
-        type: 'bebida',
-        area: '',
-        category: strCategory,
-        alcoholicOrNot: strAlcoholic,
-        name: strDrink,
-        image: strDrinkThumb,
-      };
-      if (favorites.some((recipe) => recipe.id.includes(idDrink))) {
-        favorites.pop(bebida);
-        setFavorites([...favorites]);
-      } else {
-        setFavorites([...favorites, bebida]);
-      }
+      setFavorites([...favorites, recipe]);
     }
+    localStorage.setItem('favoriteRecipes', JSON.stringify([...favorites]));
   };
 
   useEffect(() => {
@@ -72,9 +47,10 @@ function FavoriteButton({ resultDetails, path }) {
       text={
         <img
           alt="whiteHeartIcon"
-          src={ favorites.some((page) => page.id.includes(idMeal || idDrink))
+          src={ favorites.some((page) => page.id.includes(id))
             ? blackHeartIcon : whiteHeartIcon }
-          data-testid="favorite-btn"
+          data-testid={ buttonDataTestID }
+          style={ { width: '50px', height: '50px' } }
         />
       }
       onClick={ useFavoritesHandler }
@@ -83,8 +59,14 @@ function FavoriteButton({ resultDetails, path }) {
 }
 
 FavoriteButton.propTypes = {
-  path: PropTypes.objectOf(PropTypes.any).isRequired,
-  resultDetails: PropTypes.objectOf(PropTypes.any).isRequired,
+  alcoholicOrNot: PropTypes.string.isRequired,
+  area: PropTypes.string.isRequired,
+  buttonDataTestID: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;
