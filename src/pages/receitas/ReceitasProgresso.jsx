@@ -15,6 +15,7 @@ function ReceitasProgresso({ history, match: { url, path, params: { id } } }) {
     detailsAPI,
     setResultDetails,
     setRecipeStarted,
+    setArr,
   } = useContext(RecipeContext);
 
   const detailsResult = async () => {
@@ -39,10 +40,22 @@ function ReceitasProgresso({ history, match: { url, path, params: { id } } }) {
 
   useEffect(() => {
     detailsResult();
-    return (!localStorage.getItem('inProgressRecipes'))
-      ? localStorage.setItem('inProgressRecipes', JSON.stringify([]))
-      : setRecipeStarted(JSON.parse(localStorage.getItem('inProgressRecipes')));
   }, []);
+
+  useEffect(() => (
+    (!localStorage.getItem('inProgressRecipes'))
+      ? localStorage.setItem('inProgressRecipes', JSON.stringify({
+        cocktails: { },
+        meals: { },
+      }))
+      : setRecipeStarted(JSON.parse(localStorage.getItem('inProgressRecipes')))
+  ), []);
+
+  useEffect(() => (
+    (!localStorage.getItem('arr'))
+      ? localStorage.setItem('arr', JSON.stringify([]))
+      : setArr(JSON.parse(localStorage.getItem('arr')))
+  ), []);
 
   const {
     strDrink,

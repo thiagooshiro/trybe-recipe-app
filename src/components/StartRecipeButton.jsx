@@ -5,7 +5,8 @@ import handleHistoryPush from '../helpers/Functions';
 import RecipeContext from '../context/RecipeContext';
 
 function StartRecipeButton({ history, id, path }) {
-  const { recipeStarted, recipeDone, setRecipeDone } = useContext(RecipeContext);
+  const { recipeStarted, setRecipeStarted,
+    setRecipeDone, recipeDone } = useContext(RecipeContext);
 
   useEffect(() => (
     (!localStorage.getItem('doneRecipes'))
@@ -13,9 +14,22 @@ function StartRecipeButton({ history, id, path }) {
       : setRecipeDone(JSON.parse(localStorage.getItem('doneRecipes')))
   ), []);
 
+  useEffect(() => (
+    (!localStorage.getItem('inProgressRecipes'))
+      ? localStorage.setItem('inProgressRecipes', JSON.stringify({
+        cocktails: { },
+        meals: { },
+      }))
+      : setRecipeStarted(JSON.parse(localStorage.getItem('inProgressRecipes')))
+  ), []);
+
+  const locator = () => (
+    Object.values(recipeStarted).find((recipe) => (Object.keys(recipe).includes(id)))
+  );
+
   const renderButton = () => (
     <Button
-      text={ recipeStarted.includes(id) ? 'Continuar Receita' : 'Start Recipe' }
+      text={ recipeStarted && (locator()) ? 'Continuar Receita' : 'Start Recipe' }
       dataTestId="start-recipe-btn"
       onClick={ () => handleHistoryPush(history, id, path) }
       style={ (recipeDone && (recipeDone.some((recipe) => recipe.id.includes(id))))
@@ -26,7 +40,7 @@ function StartRecipeButton({ history, id, path }) {
 
   return (
     <div>
-      { recipeDone && renderButton() }
+      { recipeDone && recipeStarted && renderButton() }
     </div>
   );
 }
