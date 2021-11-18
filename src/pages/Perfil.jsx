@@ -7,7 +7,7 @@ function Perfil() {
   useEffect(() => {
     const userEmail = localStorage.getItem('user');
     const localStorageEmail = JSON.parse(userEmail);
-    setUserLogin(localStorageEmail.email);
+    setUserLogin(localStorageEmail);
   }, []);
 
   const handleClick = () => {
@@ -17,7 +17,7 @@ function Perfil() {
   return (
     <div>
       <Header title="Perfil" />
-      <span data-testid="profile-email">{userLogin}</span>
+      <span data-testid="profile-email">{userLogin && userLogin.email}</span>
       <button type="button" data-testid="profile-done-btn"> Receitas Feitas </button>
       <button type="button" data-testid="profile-favorite-btn">Receitas Favoritas</button>
       <Link to="/">

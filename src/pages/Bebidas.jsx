@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ThumbCards from '../components/ThumbCards';
 import RecipeContext from '../context/RecipeContext';
@@ -85,19 +84,17 @@ function Bebidas({ history }) {
           : apiResult
             .slice(0, RESULTS_PER_PAGE)
             .map((mealOrDrink, i) => (
-              <Link
+              <ThumbCards
+                keyId={ i }
                 key={ i }
-                to={ `/bebidas/${mealOrDrink.idDrink}` }
-              >
-                <ThumbCards
-                  keyId={ i }
-                  name={ mealOrDrink.strDrink }
-                  image={ mealOrDrink.strDrinkThumb }
-                  divDataTestID={ `${i}-recipe-card` }
-                  imageDataTestId={ `${i}-card-img` }
-                  nameDataTestId={ `${i}-card-name` }
-                />
-              </Link>
+                name={ mealOrDrink.strDrink }
+                id={ mealOrDrink.idDrink }
+                type="bebida"
+                image={ mealOrDrink.strDrinkThumb }
+                divDataTestID={ `${i}-recipe-card` }
+                imageDataTestId={ `${i}-card-img` }
+                nameDataTestId={ `${i}-card-name` }
+              />
             ))
       }
       <Footer />
