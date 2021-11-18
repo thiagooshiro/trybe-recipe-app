@@ -58,7 +58,7 @@ function ReceitasFavoritas({ match: { path } }) {
 
   return (
     <div>
-      <Header title="Receitas Feitas" />
+      <Header title="Receitas Favoritas" />
       <Button
         text="All"
         dataTestId="filter-by-all-btn"
