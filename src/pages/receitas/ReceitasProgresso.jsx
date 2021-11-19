@@ -79,7 +79,17 @@ function ReceitasProgresso({ history, match: { url, path, params: { id } } }) {
         {strDrink || strMeal}
       </h3>
       <ShareButton url={ url } id={ id } />
-      <FavoriteButton resultDetails={ resultDetails } path={ path } />
+      <FavoriteButton
+        // resultDetails={ resultDetails }
+        id={ resultDetails.idDrink || resultDetails.idMeal }
+        name={ resultDetails.strDrink || resultDetails.strMeal }
+        image={ resultDetails.strDrinkThumb || resultDetails.strMealThumb }
+        category={ resultDetails.strCategory }
+        buttonDataTestID="favorite-btn"
+        area={ resultDetails.strArea }
+        alcoholicOrNot={ resultDetails.strAlcoholic }
+        path={ path }
+      />
       <p data-testid="recipe-category">
         {`Categoria: ${path.includes('bebidas') ? strAlcoholic : strCategory}`}
       </p>
