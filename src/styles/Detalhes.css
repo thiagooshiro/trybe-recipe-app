@@ -1,0 +1,149 @@
+.favorite-button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  height: 1.5rem;
+  text-align: center;
+}
+
+.share-button {
+  background-color: white;
+  border: none;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  padding: 0.2rem 0.5rem;
+  text-align: center;
+}
+
+.category-name {
+  font-size: 0.8rem;
+  font-weight: 400;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.main-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+
+.detail-img-title {
+  display: flex;
+  flex-direction: column;
+  height: 10px;
+  justify-content: space-around;
+  width: 18rem;
+}
+
+.detail-img-title img {
+  padding-bottom: 0.8rem;
+}
+
+.detail-img-title h3 {
+  color: rgb(218, 96, 51);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0.3rem;
+  padding: 0 0.6rem;
+}
+
+.details-card {
+  flex-direction: row;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  margin-top: 10.2rem;
+}
+
+.ingredients-container {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.ingredients-container h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
+.ingredients-container ul {
+  background-color: rgb(253, 200, 181);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  margin: 0 1rem;
+  padding: 0.5rem 1.8rem;
+}
+
+.instructions-container {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.instructions-container h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  margin-top: 0.8rem;
+}
+
+.instructions-container p {
+  background-color: rgb(253, 200, 181);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+  margin: 0 1rem;
+  padding: 0.5rem 0.8rem;
+  text-align: justify;
+}
+
+.video {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.recomendation-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.recomendation-card h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
+.recomendation-card li {
+  background-color: rgb(253, 200, 181);
+  font-size: 0.8rem;
+  line-height: 0.6rem;
+  margin: 0 1rem;
+  padding: 0.3rem 0.8rem;
+  text-align: justify;
+}
+
+.recipe-button {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.recipe-button button {
+  background-color: rgb(218, 96, 51);
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin: 0 1rem;
+  padding: 0.3rem 8rem;
+}

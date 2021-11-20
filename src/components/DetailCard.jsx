@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import '../styles/Detalhes.css';
+
 function DetailCard({ resultDetails }) {
   const {
     strMealThumb,
@@ -9,17 +11,16 @@ function DetailCard({ resultDetails }) {
     strMeal,
   } = resultDetails;
   return (
-    <>
+    <div className="detail-img-title">
       <img
         src={ strMealThumb || strDrinkThumb }
         alt={ strDrink || strMeal }
         data-testid="recipe-photo"
-        style={ { width: '150px' } }
       />
       <h3 data-testid="recipe-title">
         {strDrink || strMeal}
       </h3>
-    </>
+    </div>
   );
 }
 

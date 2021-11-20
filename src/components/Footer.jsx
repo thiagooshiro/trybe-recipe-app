@@ -9,7 +9,7 @@ import '../styles/Footer.css';
 
 function Footer() {
   return (
-    <div data-testid="footer" className="bottom-menu">
+    <footer data-testid="footer" className="bottom-menu">
       <Link to="/bebidas">
         <img
           data-testid="drinks-bottom-btn"
@@ -31,17 +31,8 @@ function Footer() {
           alt="meal icon"
         />
       </Link>
-    </div>
+    </footer>
   );
 }
-
-// renderizar nas pags:
-// barra de busca
-// tela de explorar
-// tela de explorar bebidas
-// tela de explorar ingredientes
-// tela de explorar por local de origem
-// tela principal de receitas
-// tela de perfil
 
 export default Footer;

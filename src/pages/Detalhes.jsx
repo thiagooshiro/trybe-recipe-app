@@ -7,6 +7,8 @@ import FavoriteButton from '../components/FavoriteButton';
 import StartRecipeButton from '../components/StartRecipeButton';
 import DetailCard from '../components/DetailCard';
 
+import '../styles/Detalhes.css';
+
 function Detalhes({ history, match: { url, path, params: { id } } }) {
   const { detailsAPI,
     resultDetails,
@@ -73,7 +75,7 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
   }, []);
 
   return (
-    <main>
+    <main className="main-detail">
       {/* <img
         src={ strMealThumb || strDrinkThumb }
         alt={ strDrink || strMeal }
@@ -84,12 +86,14 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
         {strDrink || strMeal}
       </h3> */}
       <DetailCard resultDetails={ resultDetails } />
-      <ShareButton url={ url } id={ id } />
-      { renderFavoriteButton() }
-      <p data-testid="recipe-category">
-        {`Categoria: ${path.includes('bebidas') ? strAlcoholic : strCategory}`}
-      </p>
-      <div id="ingredient-name-and-measure">
+      <section className="details-card">
+        <ShareButton url={ url } id={ id } />
+        { renderFavoriteButton() }
+        <p data-testid="recipe-category" className="category-name">
+          {`Categoria: ${path.includes('bebidas') ? strAlcoholic : strCategory}`}
+        </p>
+      </section>
+      <div id="ingredient-name-and-measure" className="ingredients-container">
         <h4> Ingredients </h4>
         <ul>
           { resultDetails.object
@@ -103,11 +107,11 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
             ))}
         </ul>
       </div>
-      <div data-testid="instructions">
+      <div data-testid="instructions" className="instructions-container">
         <h4>Instructions</h4>
         <p>{strInstructions}</p>
       </div>
-      <div data-testid="video">
+      <div data-testid="video" className="video">
         {path.includes('comidas') ? <iframe
           width="300"
           height="195"
@@ -115,7 +119,7 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
           title={ strMeal }
         /> : null}
       </div>
-      <div id="recomendation-card">
+      <div id="recomendation-card" className="recomendation-card">
         <h4>Recomendation Recipes</h4>
         { recomendation
         && recomendation.map((recipe, index) => (
