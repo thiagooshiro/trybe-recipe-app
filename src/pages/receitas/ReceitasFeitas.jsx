@@ -4,6 +4,8 @@ import Button from '../../components/Button';
 import ThumbCards from '../../components/ThumbCards';
 import Header from '../../components/Header';
 
+import '../../styles/ReceitasFeitas.css';
+
 function ReceitasFeitas() {
   const { setRecipeDone, recipeDone,
     setFilterRecipeDone, filterRecipeDone } = useContext(RecipeContext);
@@ -57,25 +59,32 @@ function ReceitasFeitas() {
   };
 
   return (
-    <div>
+    <main>
       <Header title="Receitas Feitas" />
-      <Button
-        text="All"
-        dataTestId="filter-by-all-btn"
-        onClick={ handleAllFilter }
-      />
-      <Button
-        text="Food"
-        dataTestId="filter-by-food-btn"
-        onClick={ handleFoodFilter }
-      />
-      <Button
-        text="Drinks"
-        dataTestId="filter-by-drink-btn"
-        onClick={ handleDrinksFilter }
-      />
-      { recipeDone && renderHandler(filterRecipeDone)}
-    </div>
+      <nav className="nav-filter">
+        <Button
+          text="All"
+          dataTestId="filter-by-all-btn"
+          onClick={ handleAllFilter }
+          className="filter-btn"
+        />
+        <Button
+          text="Food"
+          dataTestId="filter-by-food-btn"
+          onClick={ handleFoodFilter }
+          className="filter-btn"
+        />
+        <Button
+          text="Drinks"
+          dataTestId="filter-by-drink-btn"
+          onClick={ handleDrinksFilter }
+          className="filter-btn"
+        />
+      </nav>
+      <body className="recipes-done-body">
+        { recipeDone && renderHandler(filterRecipeDone)}
+      </body>
+    </main>
   );
 }
 

@@ -86,13 +86,13 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
         {strDrink || strMeal}
       </h3> */}
       <DetailCard resultDetails={ resultDetails } />
-      <section className="details-card">
+      <span className="details-card">
         <ShareButton url={ url } id={ id } />
         { renderFavoriteButton() }
         <p data-testid="recipe-category" className="category-name">
           {`Categoria: ${path.includes('bebidas') ? strAlcoholic : strCategory}`}
         </p>
-      </section>
+      </span>
       <div id="ingredient-name-and-measure" className="ingredients-container">
         <h4> Ingredients </h4>
         <ul>

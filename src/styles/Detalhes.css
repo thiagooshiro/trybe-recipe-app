@@ -35,11 +35,16 @@
   display: flex;
   flex-direction: column;
   height: 10px;
-  justify-content: space-around;
+  justify-content: center;
   width: 18rem;
 }
 
 .detail-img-title img {
+  align-content: center;
+  background-clip: content-box;
+  background-position: center;
+  background-size: cover;
+  display: block;
   padding-bottom: 0.8rem;
 }
 
@@ -52,10 +57,9 @@
 }
 
 .details-card {
-  flex-direction: row;
   margin-bottom: 1rem;
   margin-left: 1rem;
-  margin-top: 10.2rem;
+  padding-top: 10rem;
 }
 
 .ingredients-container {
@@ -142,8 +146,12 @@
   background-color: rgb(218, 96, 51);
   border: none;
   color: white;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 900;
+  height: 2.5rem;
+  line-height: 17px;
   margin: 0 1rem;
-  padding: 0.3rem 8rem;
+  padding: 0.5rem;
+  text-transform: lowercase;
+  width: 19rem;
 }

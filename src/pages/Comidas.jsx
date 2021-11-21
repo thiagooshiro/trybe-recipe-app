@@ -68,11 +68,12 @@ function Comidas({ history }) {
   return (
     <main>
       <Header title="Comidas" history={ history } />
-      <nav>
+      <nav className="cat-button-container">
         {catListResult && <Button
           text="All"
           dataTestId="All-category-filter"
           onClick={ handleAllFilter }
+          className="cat-button"
         />}
         {catListResult && catListResult.slice(0, CAT_LIST_RANGE).map((cat, i) => (
           <Button
@@ -80,6 +81,7 @@ function Comidas({ history }) {
             text={ cat.strCategory }
             dataTestId={ `${cat.strCategory}-category-filter` }
             onClick={ handleFilter }
+            className="cat-button"
           />
         )) }
       </nav>

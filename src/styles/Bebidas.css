@@ -1,9 +1,8 @@
 .cat-button-container {
-  align-items: center;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 0.6rem 0.3rem;
+  flex-wrap: wrap;
+  margin: 0.5rem;
+  overflow: hidden;
 }
 
 .cat-button {
@@ -13,8 +12,10 @@
   border-radius: 5px;
   box-shadow: 1px 1px 2px #88888881;
   color: white;
+  flex: 1 1 160px;
   font-size: 0.65rem;
   font-weight: 600;
+  margin: 0.2rem;
   padding: 3px 8px;
   text-align: center;
 }
