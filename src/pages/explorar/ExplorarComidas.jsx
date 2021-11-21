@@ -6,6 +6,8 @@ import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
+import '../../styles/ExplorarComidas.css';
+
 function ExplorarComidas() {
   const [randomFood, setRandomFood] = useState({});
 
@@ -18,28 +20,30 @@ function ExplorarComidas() {
   }, []);
 
   return (
-    <div className="container-food-explore">
+    <main>
       <Header title="Explorar Comidas" />
-      <Link to="/explorar/comidas/ingredientes">
-        <Button
-          dataTestId="explore-by-ingredient"
-          text="Por Ingredientes"
-        />
-      </Link>
-      <Link to="/explorar/comidas/area">
-        <Button
-          dataTestId="explore-by-area"
-          text="Por Local de Origem"
-        />
-      </Link>
-      <Link to={ `/comidas/${randomFood.idMeal}` }>
-        <Button
-          dataTestId="explore-surprise"
-          text="Me Surpreenda!"
-        />
-      </Link>
+      <div className="container-food-explore">
+        <Link to="/explorar/comidas/ingredientes">
+          <Button
+            dataTestId="explore-by-ingredient"
+            text="Por Ingredientes"
+          />
+        </Link>
+        <Link to="/explorar/comidas/area">
+          <Button
+            dataTestId="explore-by-area"
+            text="Por Local de Origem"
+          />
+        </Link>
+        <Link to={ `/comidas/${randomFood.idMeal}` }>
+          <Button
+            dataTestId="explore-surprise"
+            text="Me Surpreenda!"
+          />
+        </Link>
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 }
 

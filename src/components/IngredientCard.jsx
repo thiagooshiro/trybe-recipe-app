@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import RecipeContext from '../context/RecipeContext';
 
 import '../styles/Card.css';
-import RecipeContext from '../context/RecipeContext';
 
 function IngredientCard(props) {
   const { setSearchText, searchText } = useContext(RecipeContext);
@@ -15,24 +15,26 @@ function IngredientCard(props) {
   };
 
   return (
-    <button
-      data-testid={ `${index}-ingredient-card` }
-      className="item-card"
-      key={ key }
-      onClick={ handleClick }
-      type="button"
-    >
-      <img
-        data-testid={ `${index}-card-img` }
-        alt={ `${ingredient}` }
-        src={ `https://www.the${mealOrDrink}db.com/images/ingredients/${ingredient}-Small.png` }
-      />
-      <h6
-        data-testid={ `${index}-card-name` }
+    <div className="item-card" key={ key }>
+      <button
+        data-testid={ `${index}-ingredient-card` }
+        className="item-card"
+        key={ key }
+        onClick={ handleClick }
+        type="button"
       >
-        {description}
-      </h6>
-    </button>
+        <img
+          data-testid={ `${index}-card-img` }
+          alt={ `${ingredient}` }
+          src={ `https://www.the${mealOrDrink}db.com/images/ingredients/${ingredient}-Small.png` }
+        />
+        <h6
+          data-testid={ `${index}-card-name` }
+        >
+          {description}
+        </h6>
+      </button>
+    </div>
   );
 }
 

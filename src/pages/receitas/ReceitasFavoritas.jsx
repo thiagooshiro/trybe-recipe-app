@@ -5,6 +5,8 @@ import Button from '../../components/Button';
 import ThumbCards from '../../components/ThumbCards';
 import Header from '../../components/Header';
 
+import '../../styles/ReceitasFeitas.css';
+
 function ReceitasFavoritas({ match: { path } }) {
   const { favorites, setFavorites,
     setFilterFavorites, filterFavorites } = useContext(RecipeContext);
@@ -57,25 +59,32 @@ function ReceitasFavoritas({ match: { path } }) {
   };
 
   return (
-    <div>
+    <main>
       <Header title="Receitas Favoritas" />
-      <Button
-        text="All"
-        dataTestId="filter-by-all-btn"
-        onClick={ handleAllFilter }
-      />
-      <Button
-        text="Food"
-        dataTestId="filter-by-food-btn"
-        onClick={ handleFoodFilter }
-      />
-      <Button
-        text="Drinks"
-        dataTestId="filter-by-drink-btn"
-        onClick={ handleDrinksFilter }
-      />
-      { favorites && renderHandler(filterFavorites)}
-    </div>
+      <nav className="nav-filter">
+        <Button
+          text="All"
+          dataTestId="filter-by-all-btn"
+          onClick={ handleAllFilter }
+          className="filter-btn"
+        />
+        <Button
+          text="Food"
+          dataTestId="filter-by-food-btn"
+          onClick={ handleFoodFilter }
+          className="filter-btn"
+        />
+        <Button
+          text="Drinks"
+          dataTestId="filter-by-drink-btn"
+          onClick={ handleDrinksFilter }
+          className="filter-btn"
+        />
+      </nav>
+      <body className="recipes-done-body">
+        { favorites && renderHandler(filterFavorites)}
+      </body>
+    </main>
   );
 }
 

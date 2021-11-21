@@ -82,6 +82,8 @@
 
 .checkbox-container input:checked ~ label {
   text-decoration: line-through;
+  text-decoration-color: black;
+  text-decoration-style: solid;
 }
 
 .instructions-container {

@@ -67,3 +67,25 @@ label h5 {
   display: flex;
   height: 5.5em;
 }
+
+.not-found {
+  align-items: center;
+  background: linear-gradient(60deg, #b80202 0%, #ff9d00 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 360px;
+}
+
+.not-found span {
+  border: white solid 2px;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1.5rem 4rem;
+  text-align: center;
+  text-transform: lowercase;
+}

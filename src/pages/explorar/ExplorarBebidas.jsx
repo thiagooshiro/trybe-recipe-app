@@ -6,6 +6,8 @@ import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
+import '../../styles/ExplorarBebidas.css';
+
 function ExplorarBebidas() {
   const [randomDrink, setRandomDrink] = useState({});
 
@@ -18,22 +20,24 @@ function ExplorarBebidas() {
   }, []);
 
   return (
-    <div className="container-drinks-explore">
+    <main>
       <Header title="Explorar Bebidas" />
-      <Link to="/explorar/bebidas/ingredientes">
-        <Button
-          dataTestId="explore-by-ingredient"
-          text="Por Ingredientes"
-        />
-      </Link>
-      <Link to={ `/bebidas/${randomDrink.idDrink}` }>
-        <Button
-          dataTestId="explore-surprise"
-          text="Me Surpreenda!"
-        />
-      </Link>
+      <div className="container-drinks-explore">
+        <Link to="/explorar/bebidas/ingredientes">
+          <Button
+            dataTestId="explore-by-ingredient"
+            text="Por Ingredientes"
+          />
+        </Link>
+        <Link to={ `/bebidas/${randomDrink.idDrink}` }>
+          <Button
+            dataTestId="explore-surprise"
+            text="Me Surpreenda!"
+          />
+        </Link>
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 }
 

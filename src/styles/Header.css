@@ -11,8 +11,8 @@ header {
   height: 2.5rem;
   justify-content: space-between;
   margin-top: 0;
-  padding: 0.5rem;
-  width: 20rem;
+  padding: 0.5rem 0.9rem;
+  width: 18rem;
 }
 
 header h3 {
@@ -34,6 +34,7 @@ header button {
 .search-container {
   align-items: center;
   background-color: white;
+  box-shadow: 0 3px 0 10px white;
   display: flex;
   flex-wrap: wrap;
   font-family: Ubuntu , sans-serif;
