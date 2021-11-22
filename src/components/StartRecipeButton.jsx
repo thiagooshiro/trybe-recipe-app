@@ -39,7 +39,7 @@ function StartRecipeButton({ history, id, path }) {
   );
 
   return (
-    <div>
+    <div className="recipe-button">
       { recipeDone && recipeStarted && renderButton() }
     </div>
   );

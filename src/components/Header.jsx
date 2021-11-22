@@ -119,6 +119,7 @@ function Header({ title, history }) {
           Primeira Letra
         </label>
         <button
+          className="exec-search-button"
           data-testid="exec-search-btn"
           type="submit"
           onClick={ (event) => handleSearchClick(event) }

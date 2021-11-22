@@ -5,6 +5,8 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import RecipeContext from '../context/RecipeContext';
 
+import '../styles/Detalhes.css';
+
 function FavoriteButton({ buttonDataTestID,
   image,
   name,
@@ -50,9 +52,9 @@ function FavoriteButton({ buttonDataTestID,
           src={ favorites.some((page) => page.id.includes(id))
             ? blackHeartIcon : whiteHeartIcon }
           data-testid={ buttonDataTestID }
-          style={ { width: '50px', height: '50px' } }
         />
       }
+      className="favorite-button"
       onClick={ useFavoritesHandler }
     />
   );

@@ -1,11 +1,11 @@
 .bottom-menu {
   align-items: center;
-  background-color: #d6470f;
+  background-color: rgb(218, 96, 51);
   bottom: 0;
   display: flex;
   justify-content: space-between;
   margin-bottom: 0;
-  padding: 0.6rem 2rem;
+  padding: 0.5rem 2rem;
   position: fixed;
   width: 360px;
 }

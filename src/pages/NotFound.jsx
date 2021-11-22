@@ -1,9 +1,11 @@
 import React from 'react';
 
+import '../styles/Login.css';
+
 function NotFound() {
   return (
-    <div>
-      Not Found
+    <div className="not-found">
+      <span>Not Found</span>
     </div>
   );
 }

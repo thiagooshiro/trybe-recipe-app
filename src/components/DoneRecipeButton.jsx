@@ -74,12 +74,14 @@ function DoneRecipeButton({ resultDetails, path, history }) {
   };
 
   return (
-    <Button
-      dataTestId="finish-recipe-btn"
-      text="Finalizar Receita"
-      onClick={ useDoneHandler }
-      disabled={ !allCheck }
-    />
+    <div className="finish-recipe-button">
+      <Button
+        dataTestId="finish-recipe-btn"
+        text="Finalizar Receita"
+        onClick={ useDoneHandler }
+        disabled={ !allCheck }
+      />
+    </div>
   );
 }
 

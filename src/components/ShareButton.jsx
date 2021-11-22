@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import shareIcon from '../images/shareIcon.svg';
 
+import '../styles/Detalhes.css';
+
 const copy = require('clipboard-copy'); // testando biblioteca
 
 function ShareButton({ url, id }) {
@@ -17,6 +19,7 @@ function ShareButton({ url, id }) {
         />
           : <p>Link copiado!</p>
       }
+      className="share-button"
       dataTestId="share-btn"
       onClick={ () => {
         const mealOrDrink = url.includes('comidas') ? 'comidas' : 'bebidas';

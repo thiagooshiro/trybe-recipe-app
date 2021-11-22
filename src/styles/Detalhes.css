@@ -23,41 +23,47 @@
   text-transform: lowercase;
 }
 
-.main-progress {
+.main-detail {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-bottom: 3rem;
 }
+
 
 .detail-img-title {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  height: 10px;
+  justify-content: center;
   width: 18rem;
 }
 
-.details-cars img {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.9rem;
-  width: 2rem;
+.detail-img-title img {
+  align-content: center;
+  background-clip: content-box;
+  background-position: center;
+  background-size: cover;
+  display: block;
+  padding-bottom: 0.8rem;
 }
 
-.details-card h3 {
+.detail-img-title h3 {
   color: rgb(218, 96, 51);
   font-size: 1.1rem;
   font-weight: 600;
-  margin-top: 0.5rem;
+  margin: 0 0.3rem;
+  padding: 0 0.6rem;
 }
 
 .details-card {
-  flex-direction: row;
   margin-bottom: 1rem;
-  margin-top: 0;
-  width: 18rem;
+  margin-left: 1rem;
+  padding-top: 10rem;
 }
 
 .ingredients-container {
-  align-items: justify;
+  align-items: stretch;
   display: flex;
   flex-direction: column;
   font-size: 0.9rem;
@@ -69,21 +75,12 @@
   margin-left: 1rem;
 }
 
-.checkbox-container {
-  color: rgb(85, 85, 85);
-  font-size: 0.8rem;
-  font-weight: 600;
+.ingredients-container ul {
+  background-color: rgb(253, 200, 181);
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
   margin: 0 1rem;
-}
-
-.checkbox-container input {
-  margin-right: 0.3rem;
-}
-
-.checkbox-container input:checked ~ label {
-  text-decoration: line-through;
-  text-decoration-color: black;
-  text-decoration-style: solid;
+  padding: 0.5rem 1.8rem;
 }
 
 .instructions-container {
@@ -110,27 +107,51 @@
   text-align: justify;
 }
 
-.finish-recipe-button {
+.video {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.recomendation-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.recomendation-card h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-left: 1rem;
+}
+
+.recomendation-card li {
+  background-color: rgb(253, 200, 181);
+  font-size: 0.8rem;
+  line-height: 0.6rem;
+  margin: 0 1rem;
+  padding: 0.3rem 0.8rem;
+  text-align: justify;
+}
+
+.recipe-button {
   align-items: center;
   display: flex;
   justify-content: center;
 }
 
-.finish-recipe-button button {
+.recipe-button button {
   background-color: rgb(218, 96, 51);
   border: none;
-  border-radius: 0.5rem;
   color: white;
   font-size: 0.9rem;
   font-weight: 900;
   height: 2.5rem;
   line-height: 17px;
-  margin: 1rem;
+  margin: 0 1rem;
   padding: 0.5rem;
   text-transform: lowercase;
-  width: 18rem;
-}
-
-.finish-recipe-button button:disabled {
-  background: rgb(119, 47, 47);
+  width: 19rem;
 }

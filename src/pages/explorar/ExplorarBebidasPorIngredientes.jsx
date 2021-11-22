@@ -17,22 +17,24 @@ function ExplorarBebidasPorIngredientes({ history }) {
     fetchDrinkIngredient();
   }, []);
   return (
-    <div>
+    <main>
       <Header title="Explorar Ingredientes" />
-      {drinkIngredient && drinkIngredient
-        .slice(0, MAX_INGREDIENTS).map((ingri, index) => (
-          <IngredientCard
-            ingredient={ ingri.strIngredient1 }
-            index={ index }
-            description={ ingri.strIngredient1 }
-            key={ index }
-            mealOrDrink="cocktail"
-            name="bebidas"
-            history={ history }
-          />
-        ))}
+      <div className="card-container">
+        {drinkIngredient && drinkIngredient
+          .slice(0, MAX_INGREDIENTS).map((ingri, index) => (
+            <IngredientCard
+              ingredient={ ingri.strIngredient1 }
+              index={ index }
+              description={ ingri.strIngredient1 }
+              key={ index }
+              mealOrDrink="cocktail"
+              name="bebidas"
+              history={ history }
+            />
+          ))}
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 }
 

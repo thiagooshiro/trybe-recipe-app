@@ -5,24 +5,28 @@ import Button from '../components/Button';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+import '../styles/Explorar.css';
+
 function Explorar() {
   return (
-    <div className="container-explore">
+    <main>
       <Header title="Explorar" />
-      <Link to="/explorar/comidas">
-        <Button
-          dataTestId="explore-food"
-          text="Explorar Comidas"
-        />
-      </Link>
-      <Link to="/explorar/bebidas">
-        <Button
-          dataTestId="explore-drinks"
-          text="Explorar Bebidas"
-        />
-      </Link>
+      <div className="container-explore">
+        <Link to="/explorar/comidas">
+          <Button
+            dataTestId="explore-food"
+            text="Explorar Comidas"
+          />
+        </Link>
+        <Link to="/explorar/bebidas">
+          <Button
+            dataTestId="explore-drinks"
+            text="Explorar Bebidas"
+          />
+        </Link>
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 }
 

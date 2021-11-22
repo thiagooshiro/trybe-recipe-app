@@ -6,6 +6,8 @@ import Button from './Button';
 import shareIcon from '../images/shareIcon.svg';
 import FavoriteButton from './FavoriteButton';
 
+import '../styles/Comidas.css';
+
 function ThumbCards({
   divDataTestID, buttonDataTestID,
   image, imageDataTestId,

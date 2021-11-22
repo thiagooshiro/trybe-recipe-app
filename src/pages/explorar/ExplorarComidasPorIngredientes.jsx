@@ -6,6 +6,8 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import IngredientCard from '../../components/IngredientCard';
 
+import '../../styles/Card.css';
+
 function ExplorarComidasPorIngredientes({ history }) {
   const [mealIngredient, setMealIngredient] = useState([]);
   const MAX_INGREDIENTS = 12;
@@ -19,21 +21,24 @@ function ExplorarComidasPorIngredientes({ history }) {
   }, []);
 
   return (
-    <div>
+    <main>
       <Header title="Explorar Ingredientes" />
-      {mealIngredient && mealIngredient.slice(0, MAX_INGREDIENTS).map((ingri, index) => (
-        <IngredientCard
-          ingredient={ ingri.strIngredient }
-          index={ index }
-          description={ ingri.strIngredient }
-          key={ index }
-          mealOrDrink="meal"
-          name="comidas"
-          history={ history }
-        />
-      ))}
+      <div className="card-container">
+        { mealIngredient && mealIngredient.slice(0, MAX_INGREDIENTS)
+          .map((ingri, index) => (
+            <IngredientCard
+              ingredient={ ingri.strIngredient }
+              index={ index }
+              description={ ingri.strIngredient }
+              key={ index }
+              mealOrDrink="meal"
+              name="comidas"
+              history={ history }
+            />
+          ))}
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 }
 

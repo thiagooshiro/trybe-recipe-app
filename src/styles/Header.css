@@ -1,3 +1,7 @@
+main {
+  width: 18rem;
+}
+
 header {
   align-items: center;
   background-color: white;
@@ -7,13 +11,13 @@ header {
   height: 2.5rem;
   justify-content: space-between;
   margin-top: 0;
-  padding: 0.5rem 1.2rem;
-  width: 360px;
+  padding: 0.5rem 0.9rem;
+  width: 18rem;
 }
 
 header h3 {
   font-size: 0.8rem;
-  font-weight: 400;
+  font-weight: 500;
   margin: 0;
   text-transform: uppercase;
 }
@@ -29,14 +33,16 @@ header button {
 
 .search-container {
   align-items: center;
-  background-color: rgb(226, 226, 226);
+  background-color: white;
+  box-shadow: 0 3px 0 10px white;
+  display: flex;
   flex-wrap: wrap;
   font-family: Ubuntu , sans-serif;
   font-size: 15px;
-  margin-top: 13px;
+  height: 5rem;
+  margin-top: 1rem;
   padding: 0.5rem;
   position: relative;
-  width: 360px;
 }
 
 .search-container button {
@@ -51,17 +57,28 @@ header button {
 
 .search-container label {
   font-size: 15px;
-  padding: 5px;
+  padding: 6px 4px 0 0;
 }
 
 .search-container input {
   border: 0.5px solid rgb(173, 2, 2);
   border-radius: 5px;
   font-size: 15px;
+  margin-right: 5px;
 }
 
 .header-container {
   border-bottom: 1px solid #e5e5e5;
   display: flex;
   width: 360px;
+}
+
+.exec-search-button {
+  background-color: rgb(173, 2, 2);
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  padding: 3px 10px;
+  text-align: center;
+  text-transform: lowercase;
 }

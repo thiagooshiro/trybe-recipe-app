@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 
+import { fetchMealsForArea } from '../../services/index';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import RecipeContext from '../../context/RecipeContext';
 import AreaCard from '../../components/AreaCard';
 
-import { fetchMealsForArea } from '../../services/index';
+import '../../styles/Card.css';
 
 function ExplorarArea({ history }) {
   const [locations, setLocations] = useState([]);
@@ -47,7 +48,7 @@ function ExplorarArea({ history }) {
   return (
     <>
       <Header title="Explorar Origem" />
-      <div>
+      <nav className="filters">
         <select
           value={ filter }
           onChange={ handleChange }
@@ -64,8 +65,8 @@ function ExplorarArea({ history }) {
             </option>
           ))}
         </select>
-      </div>
-      <div>
+      </nav>
+      <div className="card-container-origem">
         { apiResult && apiResult.slice(0, MAGICAL_NUMBER).map((meal, i) => (
           <AreaCard
             key={ i }

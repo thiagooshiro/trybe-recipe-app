@@ -1,0 +1,35 @@
+.profile-container {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin-top: 7rem;
+}
+
+.profile-container span {
+  border-bottom: rgb(251, 186, 162) solid 2px;
+  color: rgba(255, 68, 0, 0.719);
+  font-size: 0.7rem;
+  font-weight: 900;
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: 14rem;
+}
+
+.profile-container button {
+  align-items: center;
+  background-color: rgba(255, 68, 0, 0.719);
+  border: none;
+  border-radius: 0.4rem;
+  box-shadow: 1px 1px 2px #88888881;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0.3rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-transform: lowercase;
+  width: 14rem;
+}

@@ -1,0 +1,47 @@
+.nav-filter {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0.6rem 0.3rem;
+}
+
+.filter-btn {
+  align-items: center;
+  background-color: rgba(255, 68, 0, 0.719);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #88888881;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 3px 1.8rem;
+  text-align: center;
+}
+
+.recipes-done-body div {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipes-done-body {
+  margin-top: 1rem;
+}
+
+.recipes-done-body img {
+  margin-bottom: 1rem;
+}
+
+.recipes-done-body h3 {
+  color: #585858;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0.3rem;
+}
+
+.recipes-done-body button {
+  background: white;
+  border: none;
+  margin: 0;
+  padding: 0;
+}

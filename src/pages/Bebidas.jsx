@@ -6,6 +6,8 @@ import RecipeContext from '../context/RecipeContext';
 import Footer from '../components/Footer';
 import Button from '../components/Button';
 
+import '../styles/Bebidas.css';
+
 function Bebidas({ history }) {
   const {
     apiResult,
@@ -63,42 +65,48 @@ function Bebidas({ history }) {
   };
 
   return (
-    <div>
+    <main>
       <Header title="Bebidas" history={ history } />
-      { catListResult && <Button
-        text="All"
-        dataTestId="All-category-filter"
-        onClick={ handleAllFilter }
-      />}
-      {catListResult && catListResult.slice(0, CAT_LIST_RANGE).map((cat, i) => (
-        <Button
-          key={ i }
-          text={ cat.strCategory }
-          dataTestId={ `${cat.strCategory}-category-filter` }
-          onClick={ handleFilter }
-        />
-      ))}
-      {
-        !apiResult
-          ? null
-          : apiResult
-            .slice(0, RESULTS_PER_PAGE)
-            .map((mealOrDrink, i) => (
-              <ThumbCards
-                keyId={ i }
-                key={ i }
-                name={ mealOrDrink.strDrink }
-                id={ mealOrDrink.idDrink }
-                type="bebida"
-                image={ mealOrDrink.strDrinkThumb }
-                divDataTestID={ `${i}-recipe-card` }
-                imageDataTestId={ `${i}-card-img` }
-                nameDataTestId={ `${i}-card-name` }
-              />
-            ))
-      }
+      <nav className="cat-button-container">
+        { catListResult && <Button
+          text="All"
+          dataTestId="All-category-filter"
+          onClick={ handleAllFilter }
+          className="cat-button"
+        />}
+        {catListResult && catListResult.slice(0, CAT_LIST_RANGE).map((cat, i) => (
+          <Button
+            key={ i }
+            text={ cat.strCategory }
+            dataTestId={ `${cat.strCategory}-category-filter` }
+            onClick={ handleFilter }
+            className="cat-button"
+          />
+        ))}
+      </nav>
+      <body className="card-container">
+        {
+          !apiResult
+            ? null
+            : apiResult
+              .slice(0, RESULTS_PER_PAGE)
+              .map((mealOrDrink, i) => (
+                <ThumbCards
+                  keyId={ i }
+                  key={ i }
+                  name={ mealOrDrink.strDrink }
+                  id={ mealOrDrink.idDrink }
+                  type="bebida"
+                  image={ mealOrDrink.strDrinkThumb }
+                  divDataTestID={ `${i}-recipe-card` }
+                  imageDataTestId={ `${i}-card-img` }
+                  nameDataTestId={ `${i}-card-name` }
+                />
+              ))
+        }
+      </body>
       <Footer />
-    </div>
+    </main>
   );
 }
 
