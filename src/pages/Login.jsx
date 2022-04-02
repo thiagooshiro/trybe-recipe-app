@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import Button from '../components/Button';
@@ -12,11 +12,6 @@ function Login(props) {
     password,
     setPassword,
   } = useContext(RecipeContext);
-
-  useEffect(() => {
-    localStorage.setItem('mealsToken', null);
-    localStorage.setItem('cocktailsToken', null);
-  }, []);
 
   const handleChange = (target, stateFunction) => {
     stateFunction(target.value);
