@@ -34,7 +34,7 @@
 .detail-img-title {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 10px;
   justify-content: center;
   width: 18rem;
 }
@@ -59,7 +59,7 @@
 .details-card {
   margin-bottom: 1rem;
   margin-left: 1rem;
-  padding-top: 1rem;
+  padding-top: 10rem;
 }
 
 .ingredients-container {
@@ -118,33 +118,22 @@
 .recomendation-card {
   display: flex;
   flex-direction: column;
-  margin: 0.5rem;
+  margin: 1rem;
 }
 
 .recomendation-card h4 {
   font-size: 0.9rem;
   font-weight: 700;
+  margin-left: 1rem;
 }
 
 .recomendation-card li {
   background-color: rgb(253, 200, 181);
-  border-radius: 0.5rem;
-  text-align: center;
-  border: 0.001rem solid rgb(255, 255, 255);
-}
-
-.recomendation-card img {
   font-size: 0.8rem;
   line-height: 0.6rem;
-  margin: 0.5rem;
-  text-align: center;
-  width: 6rem;
-  margin-top: 1rem;
-  border-radius: 0.7rem;
-}
-
-.recomendation-card p {
-  text-align: center;
+  margin: 0 1rem;
+  padding: 0.3rem 0.8rem;
+  text-align: justify;
 }
 
 .recipe-button {
