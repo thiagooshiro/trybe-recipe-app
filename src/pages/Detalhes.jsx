@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import RecipeContext from '../context/RecipeContext';
 import ShareButton from '../components/ShareButton';
 import FavoriteButton from '../components/FavoriteButton';
+import Recomendation from '../components/Recomendation';
 import StartRecipeButton from '../components/StartRecipeButton';
 import DetailCard from '../components/DetailCard';
 
@@ -50,7 +51,6 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
     if (resultDetails) {
       return (
         <FavoriteButton
-          // resultDetails={ resultDetails }
           id={ resultDetails.idDrink || resultDetails.idMeal }
           name={ resultDetails.strDrink || resultDetails.strMeal }
           image={ resultDetails.strDrinkThumb || resultDetails.strMealThumb }
@@ -65,8 +65,9 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
   };
 
   const renderRecomendation = async () => {
+    const LIMIT = 6;
     const result = await recomendationAPI('', path);
-    setRecomendation(result);
+    setRecomendation(result.slice(0, LIMIT));
   };
 
   useEffect(() => {
@@ -76,15 +77,6 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
 
   return (
     <main className="main-detail">
-      {/* <img
-        src={ strMealThumb || strDrinkThumb }
-        alt={ strDrink || strMeal }
-        data-testid="recipe-photo"
-        style={ { width: '150px' } }
-      />
-      <h3 data-testid="recipe-title">
-        {strDrink || strMeal}
-      </h3> */}
       <DetailCard resultDetails={ resultDetails } />
       <span className="details-card">
         <ShareButton url={ url } id={ id } />
@@ -121,15 +113,7 @@ function Detalhes({ history, match: { url, path, params: { id } } }) {
       </div>
       <div id="recomendation-card" className="recomendation-card">
         <h4>Recomendation Recipes</h4>
-        { recomendation
-        && recomendation.map((recipe, index) => (
-          <li
-            key={ index }
-            data-testid={ `${index}-recomendation-card` }
-          >
-            { recipe.strMeal || recipe.strDrink }
-          </li>
-        )) }
+        <Recomendation recomendation={ recomendation } />
       </div>
       <StartRecipeButton
         history={ history }
