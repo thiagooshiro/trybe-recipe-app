@@ -128,19 +128,19 @@
 
 .recomendation-card li {
   background-color: rgb(253, 200, 181);
+  border: 0.001rem solid rgb(255, 255, 254);
   border-radius: 0.5rem;
   text-align: center;
-  border: 0.001rem solid rgb(255, 255, 255);
 }
 
 .recomendation-card img {
+  border-radius: 0.7rem;
   font-size: 0.8rem;
   line-height: 0.6rem;
   margin: 0.5rem;
+  margin-top: 1rem;
   text-align: center;
   width: 6rem;
-  margin-top: 1rem;
-  border-radius: 0.7rem;
 }
 
 .recomendation-card p {
