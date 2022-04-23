@@ -144,6 +144,7 @@
 }
 
 .recomendation-card p {
+  display: flex;
   text-align: center;
 }
 
