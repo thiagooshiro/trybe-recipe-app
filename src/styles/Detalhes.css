@@ -133,6 +133,10 @@
   text-align: center;
 }
 
+.recomendation-card p {
+  text-align: center;
+}
+
 .recomendation-card img {
   border-radius: 0.7rem;
   font-size: 0.8rem;
@@ -141,11 +145,6 @@
   margin-top: 1rem;
   text-align: center;
   width: 6rem;
-}
-
-.recomendation-card p {
-  display: flex;
-  text-align: center;
 }
 
 .recipe-button {
