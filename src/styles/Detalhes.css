@@ -134,6 +134,10 @@
   text-align: center;
 }
 
+.recomendation-card p {
+  text-align: center;
+}
+
 .recomendation-card img {
   border-radius: 0.7rem;
   font-size: 0.8rem;
@@ -142,14 +146,6 @@
   margin-top: 1rem;
   text-align: center;
   width: 6rem;
-}
-
-.recomendation-card p {
-  margin: 0 1rem;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.8rem;
-  line-height: 0.6rem;
-  text-align: center;
 }
 
 .recipe-button {
