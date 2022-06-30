@@ -9,4 +9,8 @@ utilizando das mais variadas ferramentas e conceitos que aprendemos ao longo do 
 * Componentização
 * React Hooks
 
-Contribuidores: Lucas Farias, Amanda Zotelli, Bryan Caetano, Kelvin Wervertor
+Contribuidores: 
+[Lucas Farias](https://github.com/Guinxard),
+[Amanda Zotelli](https://github.com/amzotelli), 
+[Brian Caetano](https://github.com/Bri4n-d3V), 
+[Kelvin Wervertor](https://github.com/KelvinWevertor)
