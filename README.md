@@ -1,7 +1,7 @@
-# trybe-recipe-app
+# Aplicativo de Receitas
 Projeto em grupo do final do módulo de Front End do curso da Trybe.
 
-O objetivo principal do projeto era desenvolver um aplicativo de receitas desenvolvido em React
+O objetivo principal do projeto era desenvolver um aplicativo de receitas em React
 utilizando das mais variadas ferramentas e conceitos que aprendemos ao longo do módulo de Fron-End, dentre elas se destacam:
 * Context API
 * Gerenciamento de estados dos componentes
